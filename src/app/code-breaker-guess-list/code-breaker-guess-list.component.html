@@ -1,0 +1,8 @@
+<div *ngFor="let guess of guesses" class="flex flex-wrap mb-2">
+  <div class="code-breaker-guess-colors mr-4">
+    <div *ngFor="let color of guess.colors" class="{{ color.Color }}"></div>
+  </div>
+  <div class="code-breaker-guess-keys">
+    <div *ngFor="let key of guess.keys" class="{{ key.Key }}"></div>
+  </div>
+</div>

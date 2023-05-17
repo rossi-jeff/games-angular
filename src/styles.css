@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.code-breaker-guess-colors,
+.code-breaker-guess-keys {
+  @apply flex flex-wrap;
+}
+.code-breaker-guess-colors div {
+  @apply border h-12 w-12 rounded-full mr-4;
+}
+.code-breaker-guess-keys div {
+  @apply border h-6 w-6 rounded-full mr-2;
+}
+.code-breaker-guess-colors div.White,
+.code-breaker-guess-keys div.White {
+  @apply border-black bg-white text-black;
+}
+.code-breaker-guess-colors div.Black,
+.code-breaker-guess-keys div.Black {
+  @apply border-black bg-black text-white;
+}
+.code-breaker-guess-colors div.Blue {
+  @apply border-blue-900 bg-blue-700 text-white;
+}

@@ -1,0 +1,18 @@
+<h1>Code Breaker</h1>
+
+<app-code-breaker-guess-list
+  *ngIf="game.Status == 'Playing' && game.guesses"
+  [guesses]="game.guesses"
+></app-code-breaker-guess-list>
+
+<app-code-breaker-guess-form
+  *ngIf="game.Status == 'Playing'"
+  [columns]="columns"
+  [available]="available"
+  (sendGuess)="sendGuess($event)"
+></app-code-breaker-guess-form>
+
+<app-code-breaker-options
+  (newGame)="newGame($event)"
+  *ngIf="game.Status != 'Playing'"
+></app-code-breaker-options>
