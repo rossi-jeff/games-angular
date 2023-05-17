@@ -21,7 +21,7 @@
   @apply border px-2 py-1 rounded;
 }
 .guess-word-guess-ratings div {
-  @apply h-8 w-8 border rounded text-center uppercase mr-2;
+  @apply h-8 w-8 border rounded text-center uppercase mr-2 pt-1;
 }
 .code-breaker-guess-colors div.White,
 .code-breaker-guess-keys div.White,

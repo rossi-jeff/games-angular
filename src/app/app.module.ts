@@ -17,6 +17,10 @@ import { GuessWordComponent } from './guess-word/guess-word.component';
 import { GuessWordOptionsComponent } from './guess-word-options/guess-word-options.component';
 import { GuessWordGuessFormComponent } from './guess-word-guess-form/guess-word-guess-form.component';
 import { GuessWordGuessListComponent } from './guess-word-guess-list/guess-word-guess-list.component';
+import { GuessWordHintListComponent } from './guess-word-hint-list/guess-word-hint-list.component';
+import { GuessWordScoresComponent } from './guess-word-scores/guess-word-scores.component';
+import { GuessWordScoreRowComponent } from './guess-word-score-row/guess-word-score-row.component';
+import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-word-score-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,10 @@ import { GuessWordGuessListComponent } from './guess-word-guess-list/guess-word-
     GuessWordOptionsComponent,
     GuessWordGuessFormComponent,
     GuessWordGuessListComponent,
+    GuessWordHintListComponent,
+    GuessWordScoresComponent,
+    GuessWordScoreRowComponent,
+    GuessWordScoreDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

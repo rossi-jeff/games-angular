@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { CodeBreakerScoresComponent } from './code-breaker-scores/code-breaker-scores.component';
 import { CodeBreakerScoreDetailComponent } from './code-breaker-score-detail/code-breaker-score-detail.component';
 import { GuessWordComponent } from './guess-word/guess-word.component';
+import { GuessWordScoresComponent } from './guess-word-scores/guess-word-scores.component';
+import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-word-score-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
     component: CodeBreakerScoreDetailComponent,
   },
   { path: 'guess_word', component: GuessWordComponent },
+  { path: 'guess_word/scores', component: GuessWordScoresComponent },
+  { path: 'guess_word/scores/:id', component: GuessWordScoreDetailComponent },
 ];
 
 @NgModule({

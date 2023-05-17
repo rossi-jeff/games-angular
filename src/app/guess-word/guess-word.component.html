@@ -9,11 +9,25 @@
   (sendGuess)="sendGuess($event)"
 ></app-guess-word-guess-form>
 
+<div class="rounded-box mb-2 mx-4 p-4" *ngIf="game.Status == 'Playing'">
+  <div>
+    <input
+      type="checkbox"
+      name="show-hints"
+      [checked]="showHints"
+      (click)="showHints = !showHints"
+    />
+    <label for="show-hints" class="ml-2">Show Hints</label>
+  </div>
+  <app-guess-word-hint-list
+    *ngIf="hints.length > 0"
+    [hints]="hints"
+  ></app-guess-word-hint-list>
+</div>
+
 <app-guess-word-options
   (newGame)="randomWord($event)"
   *ngIf="game.Status != 'Playing'"
 ></app-guess-word-options>
 
-<div>
-  {{ game | json }}
-</div>
+<button routerLink="/guess_word/scores">Scores</button>
