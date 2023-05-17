@@ -16,6 +16,8 @@ export class CodeBreakerGuessFormComponent implements OnInit {
     const { selectedIndex } = ev.target;
     this.selected[idx] =
       selectedIndex > 0 ? this.available[selectedIndex - 1] : '';
+    ev.target.className =
+      selectedIndex > 0 ? this.available[selectedIndex - 1] : 'White';
     this.checkReady();
   };
 
@@ -32,7 +34,10 @@ export class CodeBreakerGuessFormComponent implements OnInit {
     this.selected = new Array(this.columns).fill('');
     for (let i = 0; i < this.columns; i++) {
       const el = document.getElementById(`column-${i}`) as HTMLSelectElement;
-      if (el) el.selectedIndex = 0;
+      if (el) {
+        el.selectedIndex = 0;
+        el.className = 'White';
+      }
     }
   };
 

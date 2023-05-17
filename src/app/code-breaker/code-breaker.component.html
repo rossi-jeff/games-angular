@@ -1,7 +1,7 @@
 <h1>Code Breaker</h1>
 
 <app-code-breaker-guess-list
-  *ngIf="game.Status == 'Playing' && game.guesses"
+  *ngIf="game.Status == 'Playing' && game.guesses && game.guesses.length > 0"
   [guesses]="game.guesses"
 ></app-code-breaker-guess-list>
 

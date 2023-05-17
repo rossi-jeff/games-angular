@@ -1,8 +1,12 @@
-<div class="flex flex-wrap justify-between mx-2">
+<div class="rounded-box flex flex-wrap justify-between mx-4">
   <div *ngFor="let col of [].constructor(columns); let i = index">
     <select id="column-{{ i }}" (change)="colorChanged($event, i)">
-      <option value="">- select -</option>
-      <option *ngFor="let color of available" value="{{ color }}">
+      <option value="" class="White">- select -</option>
+      <option
+        *ngFor="let color of available"
+        value="{{ color }}"
+        class="{{ color }}"
+      >
         {{ color }}
       </option>
     </select>

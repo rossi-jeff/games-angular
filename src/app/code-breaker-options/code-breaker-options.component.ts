@@ -34,4 +34,14 @@ export class CodeBreakerOptionsComponent {
   newGameClicked = () => {
     this.newGame.emit(this.selected);
   };
+
+  selectAll = () => {
+    for (let i = 0; i < ColorArray.length; i++) {
+      const el = document.getElementById(`color-${i}`) as HTMLInputElement;
+      if (el) el.checked = true;
+      const color = this.colors[i];
+      const idx = this.selected.Colors.indexOf(color);
+      if (idx == -1) this.selected.Colors.push(color);
+    }
+  };
 }

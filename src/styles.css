@@ -2,24 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+.rounded-box {
+  @apply border border-black rounded p-4;
+}
 .code-breaker-guess-colors,
-.code-breaker-guess-keys {
+.code-breaker-guess-keys,
+.code-breaker-guess-options {
   @apply flex flex-wrap;
 }
 .code-breaker-guess-colors div {
-  @apply border h-12 w-12 rounded-full mr-4;
+  @apply border h-8 w-8 rounded-full mr-4;
 }
 .code-breaker-guess-keys div {
-  @apply border h-6 w-6 rounded-full mr-2;
+  @apply border h-4 w-4 rounded-full mr-2;
+}
+.code-breaker-guess-options div {
+  @apply border px-2 py-1 rounded;
 }
 .code-breaker-guess-colors div.White,
-.code-breaker-guess-keys div.White {
+.code-breaker-guess-keys div.White,
+option.White,
+select.White,
+.code-breaker-guess-options div.White {
   @apply border-black bg-white text-black;
 }
 .code-breaker-guess-colors div.Black,
-.code-breaker-guess-keys div.Black {
+.code-breaker-guess-keys div.Black,
+option.Black,
+select.Black,
+.code-breaker-guess-options div.Black {
   @apply border-black bg-black text-white;
 }
-.code-breaker-guess-colors div.Blue {
+.code-breaker-guess-colors div.Blue,
+option.Blue,
+select.Blue,
+.code-breaker-guess-options div.Blue {
   @apply border-blue-900 bg-blue-700 text-white;
+}
+.code-breaker-guess-colors div.Brown,
+option.Brown,
+select.Brown,
+.code-breaker-guess-options div.Brown {
+  @apply bg-amber-800 border-amber-900 text-white;
+}
+.code-breaker-guess-colors div.Green,
+option.Green,
+select.Green,
+.code-breaker-guess-options div.Green {
+  @apply bg-green-500 border-green-900 text-black;
+}
+.code-breaker-guess-colors div.Orange,
+option.Orange,
+select.Orange,
+.code-breaker-guess-options div.Orange {
+  @apply bg-orange-400 border-orange-900 text-black;
+}
+.code-breaker-guess-colors div.Purple,
+option.Purple,
+select.Purple,
+.code-breaker-guess-options div.Purple {
+  @apply bg-purple-600 border-purple-900 text-black;
+}
+.code-breaker-guess-colors div.Red,
+option.Red,
+select.Red,
+.code-breaker-guess-options div.Red {
+  @apply bg-red-600 border-red-900 text-white;
+}
+.code-breaker-guess-colors div.Yellow,
+option.Yellow,
+select.Yellow,
+.code-breaker-guess-options div.Yellow {
+  @apply bg-yellow-300 border-yellow-900 text-black;
 }
