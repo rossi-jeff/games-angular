@@ -1,0 +1,16 @@
+<div class="rounded-box mx-4 mb-2">
+  <div *ngFor="let guess of guesses">
+    <div
+      *ngIf="guess.ratings && guess.ratings.length > 0"
+      class="guess-word-guess-ratings mb-2"
+    >
+      <div
+        *ngFor="let rating of guess.ratings; let i = index"
+        id="rating-{{ rating.id }}"
+        class="{{ rating.Rating }}"
+      >
+        {{ guess.Guess != null ? guess.Guess[i] : "" }}
+      </div>
+    </div>
+  </div>
+</div>

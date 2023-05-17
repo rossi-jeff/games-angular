@@ -1,0 +1,19 @@
+<app-guess-word-guess-list
+  *ngIf="game.guesses && game.guesses.length > 0"
+  [guesses]="game.guesses"
+></app-guess-word-guess-list>
+
+<app-guess-word-guess-form
+  [columns]="Length"
+  *ngIf="game.Status == 'Playing'"
+  (sendGuess)="sendGuess($event)"
+></app-guess-word-guess-form>
+
+<app-guess-word-options
+  (newGame)="randomWord($event)"
+  *ngIf="game.Status != 'Playing'"
+></app-guess-word-options>
+
+<div>
+  {{ game | json }}
+</div>

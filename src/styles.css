@@ -7,7 +7,8 @@
 }
 .code-breaker-guess-colors,
 .code-breaker-guess-keys,
-.code-breaker-guess-options {
+.code-breaker-guess-options,
+.guess-word-guess-ratings {
   @apply flex flex-wrap;
 }
 .code-breaker-guess-colors div {
@@ -18,6 +19,9 @@
 }
 .code-breaker-guess-options div {
   @apply border px-2 py-1 rounded;
+}
+.guess-word-guess-ratings div {
+  @apply h-8 w-8 border rounded text-center uppercase mr-2;
 }
 .code-breaker-guess-colors div.White,
 .code-breaker-guess-keys div.White,
@@ -42,13 +46,15 @@ select.Blue,
 .code-breaker-guess-colors div.Brown,
 option.Brown,
 select.Brown,
-.code-breaker-guess-options div.Brown {
+.code-breaker-guess-options div.Brown,
+.guess-word-guess-ratings div.Brown {
   @apply bg-amber-800 border-amber-900 text-white;
 }
 .code-breaker-guess-colors div.Green,
 option.Green,
 select.Green,
-.code-breaker-guess-options div.Green {
+.code-breaker-guess-options div.Green,
+.guess-word-guess-ratings div.Green {
   @apply bg-green-500 border-green-900 text-black;
 }
 .code-breaker-guess-colors div.Orange,
@@ -74,4 +80,13 @@ option.Yellow,
 select.Yellow,
 .code-breaker-guess-options div.Yellow {
   @apply bg-yellow-300 border-yellow-900 text-black;
+}
+.guess-word-guess-ratings div.Gray {
+  @apply border-slate-900 bg-slate-200 text-black;
+}
+.guess-word-guess-letters {
+  @apply flex flex-wrap;
+}
+.guess-word-guess-letters input {
+  @apply w-8 h-8 text-center bg-white text-black border border-black rounded mr-2;
 }

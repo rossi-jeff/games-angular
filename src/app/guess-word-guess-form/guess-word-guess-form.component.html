@@ -1,0 +1,14 @@
+<div class="rounded-box mx-4">
+  <div class="guess-word-guess-letters">
+    <div *ngFor="let letter of selected; let i = index">
+      <input
+        type="text"
+        id="letter-{{ i }}"
+        maxlength="1"
+        [value]="selected[i]"
+        (keypress)="focusNext($event, i)"
+      />
+    </div>
+    <button [disabled]="!ready" (click)="sendGuessClicked()">Send Guess</button>
+  </div>
+</div>

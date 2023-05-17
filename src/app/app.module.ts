@@ -13,6 +13,10 @@ import { CodeBreakerScoresComponent } from './code-breaker-scores/code-breaker-s
 import { CodeBreakerScoreRowComponent } from './code-breaker-score-row/code-breaker-score-row.component';
 import { CodeBreakerScoreDetailComponent } from './code-breaker-score-detail/code-breaker-score-detail.component';
 import { CodeBreakerSolutionComponent } from './code-breaker-solution/code-breaker-solution.component';
+import { GuessWordComponent } from './guess-word/guess-word.component';
+import { GuessWordOptionsComponent } from './guess-word-options/guess-word-options.component';
+import { GuessWordGuessFormComponent } from './guess-word-guess-form/guess-word-guess-form.component';
+import { GuessWordGuessListComponent } from './guess-word-guess-list/guess-word-guess-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { CodeBreakerSolutionComponent } from './code-breaker-solution/code-break
     CodeBreakerScoreRowComponent,
     CodeBreakerScoreDetailComponent,
     CodeBreakerSolutionComponent,
+    GuessWordComponent,
+    GuessWordOptionsComponent,
+    GuessWordGuessFormComponent,
+    GuessWordGuessListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
