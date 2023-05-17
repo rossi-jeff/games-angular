@@ -5,6 +5,13 @@
   [guesses]="game.guesses"
 ></app-code-breaker-guess-list>
 
+<app-code-breaker-solution
+  *ngIf="
+    game && game.Status != 'Playing' && game.codes && game.codes.length > 0
+  "
+  [codeBreaker]="game"
+></app-code-breaker-solution>
+
 <app-code-breaker-guess-form
   *ngIf="game.Status == 'Playing'"
   [columns]="columns"
@@ -16,3 +23,5 @@
   (newGame)="newGame($event)"
   *ngIf="game.Status != 'Playing'"
 ></app-code-breaker-options>
+
+<button routerLink="/code_breaker/scores">Scores</button>

@@ -1,0 +1,12 @@
+<div class="rounded-box mx-4 mb-2">
+  <h2>Solution</h2>
+  <div
+    class="code-breaker-guess-colors"
+    *ngIf="codeBreaker.codes && codeBreaker.codes.length > 0"
+  >
+    <div
+      *ngFor="let color of codeBreaker.codes"
+      class="{{ color.Color }}"
+    ></div>
+  </div>
+</div>

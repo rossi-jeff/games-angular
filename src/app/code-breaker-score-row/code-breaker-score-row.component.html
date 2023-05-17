@@ -1,0 +1,22 @@
+<div class="flex flex-wrap justify-between mx-4">
+  <div>
+    <button routerLink="/code_breaker/scores/{{ codeBreaker.id }}">
+      Details
+    </button>
+  </div>
+  <div>
+    {{ codeBreaker.user != null ? codeBreaker.user.UserName : "Anonyous" }}
+  </div>
+  <div>
+    {{ codeBreaker.Status }}
+  </div>
+  <div>
+    {{ codeBreaker.Score }}
+  </div>
+  <div>
+    {{ codeBreaker.Colors }}
+  </div>
+  <div>
+    {{ codeBreaker.Columns }}
+  </div>
+</div>

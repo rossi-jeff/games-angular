@@ -1,0 +1,10 @@
+<app-code-breaker-guess-list
+  *ngIf="codeBreaker && codeBreaker.guesses && codeBreaker.guesses.length > 0"
+  [guesses]="codeBreaker.guesses"
+></app-code-breaker-guess-list>
+
+<app-code-breaker-solution
+  [codeBreaker]="codeBreaker"
+></app-code-breaker-solution>
+
+<button routerLink="/code_breaker/scores">Back to Scores</button>
