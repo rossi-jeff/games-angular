@@ -1,0 +1,20 @@
+<div class="flex flex-wrap justify-between mx-4">
+  <div>
+    <button routerLink="/guess_word/scores/{{ guessWord.id }}">Details</button>
+  </div>
+  <div>
+    {{ guessWord.user != null ? guessWord.user.UserName : "Anonymous" }}
+  </div>
+  <div>
+    {{ guessWord.Status }}
+  </div>
+  <div>
+    {{ guessWord.Score }}
+  </div>
+  <div>
+    {{ guessWord.word != null ? guessWord.word.Word : "N/A" }}
+  </div>
+  <div>
+    {{ guessWord.word != null ? guessWord.word.Length : "N/A" }}
+  </div>
+</div>

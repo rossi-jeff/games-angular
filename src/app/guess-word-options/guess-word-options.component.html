@@ -1,0 +1,19 @@
+<div class="rounded-box mx-4 mb-2">
+  <div class="flex flex-wrap">
+    <div class="mr-2">
+      <label for="length-select" class="mr-2">Word Length</label>
+      <select id="length-select" (change)="lengthChanged($event)">
+        <option
+          *ngFor="let l of lengths"
+          value="{{ l }}"
+          [selected]="l == Length"
+        >
+          {{ l }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button (click)="newGameClicked()">New Game</button>
+    </div>
+  </div>
+</div>
