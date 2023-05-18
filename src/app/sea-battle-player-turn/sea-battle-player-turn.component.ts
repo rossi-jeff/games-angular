@@ -66,6 +66,7 @@ export class SeaBattlePlayerTurnComponent implements OnInit {
   navy: Navy = Navy.Player;
   @Output() fire = new EventEmitter<FireType>();
   @Output() toggle = new EventEmitter();
+  @Input() readOnly!: boolean;
 
   verticalChanged = (ev: any) => {
     this.target.Vertical = this.vertical[ev.target.selectedIndex];

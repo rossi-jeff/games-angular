@@ -59,6 +59,7 @@ export class SeaBattleOpponentTurnComponent implements OnInit {
   navy: Navy = Navy.Opponent;
   @Output() fire = new EventEmitter<FireType>();
   @Output() toggle = new EventEmitter();
+  @Input() readOnly!: boolean;
 
   drawShips = () => {
     for (const ship of this.ships) {

@@ -1,0 +1,17 @@
+<app-sea-battle-player-turn
+  [axis]="seaBattle.Axis || 8"
+  [ships]="opponentShips"
+  [turns]="playerTurns"
+  [hasFired]="true"
+  [readOnly]="true"
+></app-sea-battle-player-turn>
+
+<app-sea-battle-opponent-turn
+  [axis]="seaBattle.Axis || 8"
+  [ships]="playerShips"
+  [turns]="opponentTurns"
+  [hasFired]="true"
+  [readOnly]="true"
+></app-sea-battle-opponent-turn>
+
+<button routerLink="/sea_battle/scores">Back to Scores</button>
