@@ -8,7 +8,8 @@
 .code-breaker-guess-colors,
 .code-breaker-guess-keys,
 .code-breaker-guess-options,
-.guess-word-guess-ratings {
+.guess-word-guess-ratings,
+.ship-grid-row {
   @apply flex flex-wrap;
 }
 .code-breaker-guess-colors div {
@@ -89,4 +90,23 @@ select.Yellow,
 }
 .guess-word-guess-letters input {
   @apply w-8 h-8 text-center bg-white text-black border border-black rounded mr-2;
+}
+.ship-grid-header {
+  @apply w-10 h-10 text-center font-bold pt-2 bg-slate-200 border border-dotted border-slate-500;
+}
+.ship-grid-cell {
+  @apply w-10 h-10 py-1 border border-dotted border-slate-500 text-center;
+}
+.highlighted {
+  @apply bg-yellow-200;
+}
+.occupied {
+  @apply bg-slate-300;
+}
+div.Hit span,
+div.Sunk span {
+  @apply h-8 w-8 inline-block rounded-full bg-red-200;
+}
+div.Miss span {
+  @apply h-8 w-8 inline-block rounded-full bg-blue-200;
 }

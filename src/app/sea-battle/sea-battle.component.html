@@ -1,0 +1,39 @@
+<app-sea-battle-player-turn
+  *ngIf="
+    game.Status == 'Playing' && shipsToPlace.length == 0 && navy == 'Player'
+  "
+  [axis]="axis"
+  [ships]="opponentShips"
+  [turns]="playerTurns"
+  [hasFired]="hasFired"
+  [readOnly]="false"
+  (fire)="playerFire($event)"
+  (toggle)="toggleTurn()"
+></app-sea-battle-player-turn>
+
+<app-sea-battle-opponent-turn
+  *ngIf="
+    game.Status == 'Playing' && shipsToPlace.length == 0 && navy == 'Opponent'
+  "
+  [axis]="axis"
+  [ships]="playerShips"
+  [turns]="opponentTurns"
+  [hasFired]="hasFired"
+  [readOnly]="false"
+  (fire)="opponentFire($event)"
+  (toggle)="toggleTurn()"
+></app-sea-battle-opponent-turn>
+
+<app-sea-battle-placement
+  *ngIf="game.Status == 'Playing' && shipsToPlace.length > 0"
+  [axis]="axis"
+  [shipsToPlace]="shipsToPlace"
+  (placeShip)="placeShip($event)"
+></app-sea-battle-placement>
+
+<app-sea-battle-options
+  (newGame)="newGame($event)"
+  *ngIf="game.Status != 'Playing'"
+></app-sea-battle-options>
+
+<button routerLink="/sea_battle/scores">Scores</button>

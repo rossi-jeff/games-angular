@@ -1,0 +1,25 @@
+<div class="rounded-box mx-4 mb-2 p-4">
+  <div>
+    <label for="axis-select">Axis</label>
+    <select id="axis-select" (change)="axisChanged($event)">
+      <option *ngFor="let a of axes" value="{{ a }}" [selected]="a == axis">
+        {{ a }}
+      </option>
+    </select>
+  </div>
+  <div *ngFor="let shipType of shipTypes">
+    <label for="qty-{{ shipType }}">{{ shipType }}</label>
+    <select id="qty-{{ shipType }}" (change)="shipChanged($event, shipType)">
+      <option
+        *ngFor="let qty of perShipType"
+        value="{{ qty }}"
+        [selected]="ships[shipType] == qty"
+      >
+        {{ qty }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <button [disabled]="!ready" (click)="newGameClicked()">New Game</button>
+  </div>
+</div>

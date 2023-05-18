@@ -1,0 +1,90 @@
+<div class="rounded-box mx-4 p-4">
+  <div class="flex flex-wrap">
+    <div>
+      <!-- grid -->
+      <div id="ship-placement-grid">
+        <div class="ship-grid-row">
+          <div class="ship-grid-header"></div>
+          <div
+            class="ship-grid-header"
+            *ngFor="let H of horizontal"
+            id="P-H-{{ H }}"
+          >
+            {{ H }}
+          </div>
+        </div>
+        <div class="ship-grid-row" *ngFor="let V of vertical">
+          <div class="ship-grid-header" id="P-H-{{ V }}">{{ V }}</div>
+          <div
+            class="ship-grid-cell"
+            *ngFor="let H of horizontal"
+            id="P-{{ V }}-{{ H }}"
+          >
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-4">
+      <!-- controls -->
+      <div>
+        <label for="ship-select">Ship</label>
+        <select id="ship-select" (change)="shipChanged($event)">
+          <option
+            *ngFor="let ship of shipsToPlace"
+            value="{{ ship }}"
+            [selected]="placement.ship == ship"
+          >
+            {{ ship }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="vertical-select">Vertical</label>
+        <select id="vertical-select" (change)="verticalChanged($event)">
+          <option
+            *ngFor="let v of vertical"
+            value="{{ v }}"
+            [selected]="placement.vertical == v"
+          >
+            {{ v }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="horizontal-select">Horizontal</label>
+        <select id="horizontal-select" (change)="horizontalChanged($event)">
+          <option
+            *ngFor="let h of horizontal"
+            value="{{ h }}"
+            [selected]="placement.horizontal == h"
+          >
+            {{ h }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="direction-select">Direction</label>
+        <select id="direction-select" (change)="directionChanged($event)">
+          <option
+            *ngFor="let d of directions"
+            value="{{ d }}"
+            [selected]="placement.direction == d"
+          >
+            {{ d }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button [disabled]="!ready" (click)="placeShipClicked()">
+          Place Ship
+        </button>
+      </div>
+      <div *ngIf="errors.length > 0">
+        <ul>
+          <li *ngFor="let e of errors">{{ e }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="rounded-box mx-4 p-4 mb-2">
+  <h2>Opponent Turn</h2>
+  <div class="flex flex-wrap">
+    <div>
+      <!--grid-->
+      <div id="opponent-turn-grid">
+        <div class="ship-grid-row">
+          <div class="ship-grid-header"></div>
+          <div
+            class="ship-grid-header"
+            *ngFor="let H of horizontal"
+            id="OT-HD-{{ H }}"
+          >
+            {{ H }}
+          </div>
+        </div>
+        <div class="ship-grid-row" *ngFor="let V of vertical">
+          <div class="ship-grid-header" id="OT-HD-{{ V }}">{{ V }}</div>
+          <div
+            class="ship-grid-cell"
+            *ngFor="let H of horizontal"
+            id="OT-{{ V }}-{{ H }}"
+          >
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!readOnly">
+      <!--controls-->
+      <button *ngIf="!hasFired" (click)="fireClicked()">Fire</button>
+      <button *ngIf="hasFired" (click)="toggleClicked()">Player Turn</button>
+    </div>
+  </div>
+</div>

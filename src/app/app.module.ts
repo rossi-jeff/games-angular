@@ -21,6 +21,15 @@ import { GuessWordHintListComponent } from './guess-word-hint-list/guess-word-hi
 import { GuessWordScoresComponent } from './guess-word-scores/guess-word-scores.component';
 import { GuessWordScoreRowComponent } from './guess-word-score-row/guess-word-score-row.component';
 import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-word-score-detail.component';
+import { SeaBattleComponent } from './sea-battle/sea-battle.component';
+import { SeaBattleOptionsComponent } from './sea-battle-options/sea-battle-options.component';
+import { SeaBattlePlacementComponent } from './sea-battle-placement/sea-battle-placement.component';
+import { SeaBattlePlayerTurnComponent } from './sea-battle-player-turn/sea-battle-player-turn.component';
+import { SeaBattleOpponentTurnComponent } from './sea-battle-opponent-turn/sea-battle-opponent-turn.component';
+import { SeaBattleShipDisplayComponent } from './sea-battle-ship-display/sea-battle-ship-display.component';
+import { SeaBattleScoresComponent } from './sea-battle-scores/sea-battle-scores.component';
+import { SeaBattleScoreDetailsComponent } from './sea-battle-score-details/sea-battle-score-details.component';
+import { SeaBattleScoreRowComponent } from './sea-battle-score-row/sea-battle-score-row.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +51,15 @@ import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-w
     GuessWordScoresComponent,
     GuessWordScoreRowComponent,
     GuessWordScoreDetailComponent,
+    SeaBattleComponent,
+    SeaBattleOptionsComponent,
+    SeaBattlePlacementComponent,
+    SeaBattlePlayerTurnComponent,
+    SeaBattleOpponentTurnComponent,
+    SeaBattleShipDisplayComponent,
+    SeaBattleScoresComponent,
+    SeaBattleScoreDetailsComponent,
+    SeaBattleScoreRowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

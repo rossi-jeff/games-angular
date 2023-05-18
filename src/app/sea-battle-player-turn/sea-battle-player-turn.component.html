@@ -1,0 +1,71 @@
+<div class="rounded-box mx-4 p-4 mb-2">
+  <h2>Player Turn</h2>
+  <div class="flex flex-wrap">
+    <div>
+      <!--grid-->
+      <div id="player-turn-grid">
+        <div class="ship-grid-row">
+          <div class="ship-grid-header"></div>
+          <div
+            class="ship-grid-header"
+            *ngFor="let H of horizontal"
+            id="PT-HD-{{ H }}"
+          >
+            {{ H }}
+          </div>
+        </div>
+        <div class="ship-grid-row" *ngFor="let V of vertical">
+          <div class="ship-grid-header" id="PT-HD-{{ V }}">{{ V }}</div>
+          <div
+            class="ship-grid-cell"
+            *ngFor="let H of horizontal"
+            id="PT-{{ V }}-{{ H }}"
+          >
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!readOnly">
+      <!--controls-->
+      <div>
+        <label for="vertical-select">Vertical</label>
+        <select id="vertical-select" (change)="verticalChanged($event)">
+          <option
+            *ngFor="let v of vertical"
+            value="{{ v }}"
+            [selected]="target.Vertical == v"
+          >
+            {{ v }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="horizontal-select">Horizontal</label>
+        <select id="horizontal-select" (change)="horizontalChanged($event)">
+          <option
+            *ngFor="let h of horizontal"
+            value="{{ h }}"
+            [selected]="target.Horizontal == h"
+          >
+            {{ h }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button *ngIf="!hasFired" (click)="fireClicked()">Fire</button>
+        <button *ngIf="hasFired" (click)="toggleClicked()">
+          Opponent Turn
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="opponent-ships" class="mt-4">
+    <div class="flex flex-wrap">
+      <app-sea-battle-ship-display
+        *ngFor="let ship of ships"
+        [ship]="ship"
+      ></app-sea-battle-ship-display>
+    </div>
+  </div>
+</div>
