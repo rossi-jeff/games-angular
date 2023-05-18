@@ -10,6 +10,7 @@ import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-w
 import { SeaBattleComponent } from './sea-battle/sea-battle.component';
 import { SeaBattleScoresComponent } from './sea-battle-scores/sea-battle-scores.component';
 import { SeaBattleScoreDetailsComponent } from './sea-battle-score-details/sea-battle-score-details.component';
+import { HangManComponent } from './hang-man/hang-man.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'sea_battle', component: SeaBattleComponent },
   { path: 'sea_battle/scores', component: SeaBattleScoresComponent },
   { path: 'sea_battle/scores/:id', component: SeaBattleScoreDetailsComponent },
+  { path: 'hang_man', component: HangManComponent },
 ];
 
 @NgModule({

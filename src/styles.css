@@ -110,3 +110,21 @@ div.Sunk span {
 div.Miss span {
   @apply h-8 w-8 inline-block rounded-full bg-blue-200;
 }
+.hang-man-buttons {
+  @apply flex flex-wrap justify-between;
+}
+.hang-man-buttons button {
+  @apply px-2 py-1 font-bold border border-black rounded;
+}
+.hang-man-buttons button.correct {
+  @apply border-green-900 text-green-900 bg-green-300;
+}
+.hang-man-buttons button.wrong {
+  @apply border-red-900 text-white bg-red-600;
+}
+.hang-man-display {
+  @apply flex flex-wrap;
+}
+.hang-man-display div {
+  @apply w-8 h-8 border-b border-b-black font-bold text-center mr-2;
+}

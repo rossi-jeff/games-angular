@@ -1,0 +1,11 @@
+<div class="rounded-box mx-4 p-4">
+  <div class="hang-man-buttons">
+    <button
+      *ngFor="let letter of letters"
+      id="letter-{{ letter }}"
+      (click)="letterClicked(letter)"
+    >
+      {{ letter }}
+    </button>
+  </div>
+</div>
