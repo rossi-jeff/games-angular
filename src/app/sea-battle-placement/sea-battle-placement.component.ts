@@ -75,7 +75,6 @@ export class SeaBattlePlacementComponent implements OnInit {
   };
 
   highlightShip = () => {
-    console.log('highlightShip');
     if (this.points.length) {
       for (const point of this.points) {
         const el = document.getElementById(

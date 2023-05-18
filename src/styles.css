@@ -95,11 +95,18 @@ select.Yellow,
   @apply w-10 h-10 text-center font-bold pt-2 bg-slate-200 border border-dotted border-slate-500;
 }
 .ship-grid-cell {
-  @apply w-10 h-10 border border-dotted border-slate-500;
+  @apply w-10 h-10 py-1 border border-dotted border-slate-500 text-center;
 }
 .highlighted {
   @apply bg-yellow-200;
 }
 .occupied {
   @apply bg-slate-300;
+}
+div.Hit span,
+div.Sunk span {
+  @apply h-8 w-8 inline-block rounded-full bg-red-200;
+}
+div.Miss span {
+  @apply h-8 w-8 inline-block rounded-full bg-blue-200;
 }

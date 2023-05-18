@@ -26,6 +26,7 @@ import { SeaBattleOptionsComponent } from './sea-battle-options/sea-battle-optio
 import { SeaBattlePlacementComponent } from './sea-battle-placement/sea-battle-placement.component';
 import { SeaBattlePlayerTurnComponent } from './sea-battle-player-turn/sea-battle-player-turn.component';
 import { SeaBattleOpponentTurnComponent } from './sea-battle-opponent-turn/sea-battle-opponent-turn.component';
+import { SeaBattleShipDisplayComponent } from './sea-battle-ship-display/sea-battle-ship-display.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SeaBattleOpponentTurnComponent } from './sea-battle-opponent-turn/sea-b
     SeaBattlePlacementComponent,
     SeaBattlePlayerTurnComponent,
     SeaBattleOpponentTurnComponent,
+    SeaBattleShipDisplayComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

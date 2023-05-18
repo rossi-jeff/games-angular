@@ -1,0 +1,12 @@
+<div class="rounded-box mr-4 mb-4 p-4" id="ship-{{ ship.id }}">
+  <div class="flex flex-wrap" *ngIf="ship.points && ship.points.length > 0">
+    <div
+      *ngFor="let point of ship.points"
+      id="ship-point-{{ point.id }}"
+      class="{{ isPointHit(point) }}"
+    >
+      <span></span>
+    </div>
+  </div>
+  <div class="font-bold text-center">{{ ship.Type }}</div>
+</div>

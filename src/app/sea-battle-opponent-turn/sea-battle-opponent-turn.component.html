@@ -9,13 +9,13 @@
           <div
             class="ship-grid-header"
             *ngFor="let H of horizontal"
-            id="OT-H-{{ H }}"
+            id="OT-HD-{{ H }}"
           >
             {{ H }}
           </div>
         </div>
         <div class="ship-grid-row" *ngFor="let V of vertical">
-          <div class="ship-grid-header" id="OT-H-{{ V }}">{{ V }}</div>
+          <div class="ship-grid-header" id="OT-HD-{{ V }}">{{ V }}</div>
           <div
             class="ship-grid-cell"
             *ngFor="let H of horizontal"
@@ -28,8 +28,8 @@
     </div>
     <div>
       <!--controls-->
-      <button>Player turn</button>
-      <button>Fire</button>
+      <button *ngIf="!hasFired" (click)="fireClicked()">Fire</button>
+      <button *ngIf="hasFired" (click)="toggleClicked()">Player Turn</button>
     </div>
   </div>
 </div>

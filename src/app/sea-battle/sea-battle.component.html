@@ -1,15 +1,25 @@
 <app-sea-battle-player-turn
-  *ngIf="game.Status == 'Playing'"
+  *ngIf="
+    game.Status == 'Playing' && shipsToPlace.length == 0 && navy == 'Player'
+  "
   [axis]="axis"
   [ships]="opponentShips"
   [turns]="playerTurns"
+  [hasFired]="hasFired"
+  (fire)="playerFire($event)"
+  (toggle)="toggleTurn()"
 ></app-sea-battle-player-turn>
 
 <app-sea-battle-opponent-turn
-  *ngIf="game.Status == 'Playing'"
+  *ngIf="
+    game.Status == 'Playing' && shipsToPlace.length == 0 && navy == 'Opponent'
+  "
   [axis]="axis"
   [ships]="playerShips"
   [turns]="opponentTurns"
+  [hasFired]="hasFired"
+  (fire)="opponentFire($event)"
+  (toggle)="toggleTurn()"
 ></app-sea-battle-opponent-turn>
 
 <app-sea-battle-placement

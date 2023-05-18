@@ -9,13 +9,13 @@
           <div
             class="ship-grid-header"
             *ngFor="let H of horizontal"
-            id="PT-H-{{ H }}"
+            id="PT-HD-{{ H }}"
           >
             {{ H }}
           </div>
         </div>
         <div class="ship-grid-row" *ngFor="let V of vertical">
-          <div class="ship-grid-header" id="PT-H-{{ V }}">{{ V }}</div>
+          <div class="ship-grid-header" id="PT-HD-{{ V }}">{{ V }}</div>
           <div
             class="ship-grid-cell"
             *ngFor="let H of horizontal"
@@ -31,7 +31,11 @@
       <div>
         <label for="vertical-select">Vertical</label>
         <select id="vertical-select" (change)="verticalChanged($event)">
-          <option *ngFor="let v of vertical" value="{{ v }}">
+          <option
+            *ngFor="let v of vertical"
+            value="{{ v }}"
+            [selected]="target.Vertical == v"
+          >
             {{ v }}
           </option>
         </select>
@@ -39,19 +43,29 @@
       <div>
         <label for="horizontal-select">Horizontal</label>
         <select id="horizontal-select" (change)="horizontalChanged($event)">
-          <option *ngFor="let h of horizontal" value="{{ h }}">
+          <option
+            *ngFor="let h of horizontal"
+            value="{{ h }}"
+            [selected]="target.Horizontal == h"
+          >
             {{ h }}
           </option>
         </select>
       </div>
-      <div></div>
+      <div>
+        <button *ngIf="!hasFired" (click)="fireClicked()">Fire</button>
+        <button *ngIf="hasFired" (click)="toggleClicked()">
+          Opponent Turn
+        </button>
+      </div>
     </div>
   </div>
-  <div id="opponent-ships">
+  <div id="opponent-ships" class="mt-4">
     <div class="flex flex-wrap">
-      <div *ngFor="let ship of ships" id="ship-{{ ship.id }}" class="px-2 py-1">
-        {{ ship.Type }}
-      </div>
+      <app-sea-battle-ship-display
+        *ngFor="let ship of ships"
+        [ship]="ship"
+      ></app-sea-battle-ship-display>
     </div>
   </div>
 </div>

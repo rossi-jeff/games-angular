@@ -21,6 +21,7 @@ export class SeaBattleComponent {
   opponentShips: SeaBattleShip[] = [];
   opponentTurns: SeaBattleTurn[] = [];
   navy: Navy = Navy.Player;
+  hasFired: boolean = false;
 
   constructor(private api: ApiService) {}
 
@@ -67,6 +68,42 @@ export class SeaBattleComponent {
         body: { ShipType, Size, Navy: Navy.Opponent },
       })
       .subscribe(() => this.reloadGame());
+  };
+
+  playerFire = (ev: any) => {
+    if (!this.game.id) return;
+    const {
+      navy,
+      target: { Horizontal, Vertical },
+    } = ev;
+    this.api
+      .post({
+        path: `api/sea_battle/${this.game.id}/fire`,
+        body: { Horizontal, Vertical, Navy: navy },
+      })
+      .subscribe(() => {
+        this.reloadGame();
+        this.hasFired = true;
+      });
+  };
+
+  opponentFire = (ev: any) => {
+    if (!this.game.id) return;
+    const { navy } = ev;
+    this.api
+      .post({
+        path: `api/sea_battle/${this.game.id}/fire`,
+        body: { Navy: navy },
+      })
+      .subscribe(() => {
+        this.reloadGame();
+        this.hasFired = true;
+      });
+  };
+
+  toggleTurn = () => {
+    this.navy = this.navy == Navy.Player ? Navy.Opponent : Navy.Player;
+    this.hasFired = false;
   };
 
   reloadGame = async () => {
