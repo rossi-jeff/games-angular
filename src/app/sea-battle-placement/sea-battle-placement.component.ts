@@ -21,7 +21,23 @@ type PlaceShipType = {
   styleUrls: ['./sea-battle-placement.component.css'],
 })
 export class SeaBattlePlacementComponent implements OnInit {
-  @Input() shipsToPlace!: string[];
+  private _toPlace!: string[];
+
+  @Input()
+  set shipsToPlace(value: string[]) {
+    console.log('shipsToPlace', value);
+    this.placement.ship = value.length ? value[0] : '';
+    this._toPlace = value;
+    this.placement.horizontal = this.horizontal[0];
+    this.placement.vertical = this.vertical[0];
+    this.placement.direction = this.directions[0];
+    setTimeout(() => {
+      this.highlightShip();
+    }, 100);
+  }
+  get shipsToPlace() {
+    return this._toPlace;
+  }
   @Input() axis!: number;
   @Output() placeShip = new EventEmitter<PlaceShipType>();
   horizontal: string[] = [];
@@ -128,7 +144,6 @@ export class SeaBattlePlacementComponent implements OnInit {
     this.placement.horizontal = this.horizontal[0];
     this.placement.vertical = this.vertical[0];
     this.placement.direction = this.directions[0];
-    this.placement.ship = this.shipsToPlace[0] || '';
   };
 
   ngOnInit(): void {

@@ -24,6 +24,8 @@ import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-w
 import { SeaBattleComponent } from './sea-battle/sea-battle.component';
 import { SeaBattleOptionsComponent } from './sea-battle-options/sea-battle-options.component';
 import { SeaBattlePlacementComponent } from './sea-battle-placement/sea-battle-placement.component';
+import { SeaBattlePlayerTurnComponent } from './sea-battle-player-turn/sea-battle-player-turn.component';
+import { SeaBattleOpponentTurnComponent } from './sea-battle-opponent-turn/sea-battle-opponent-turn.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { SeaBattlePlacementComponent } from './sea-battle-placement/sea-battle-p
     SeaBattleComponent,
     SeaBattleOptionsComponent,
     SeaBattlePlacementComponent,
+    SeaBattlePlayerTurnComponent,
+    SeaBattleOpponentTurnComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

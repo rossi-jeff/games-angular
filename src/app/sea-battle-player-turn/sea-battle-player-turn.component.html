@@ -1,0 +1,57 @@
+<div class="rounded-box mx-4 p-4 mb-2">
+  <h2>Player Turn</h2>
+  <div class="flex flex-wrap">
+    <div>
+      <!--grid-->
+      <div id="player-turn-grid">
+        <div class="ship-grid-row">
+          <div class="ship-grid-header"></div>
+          <div
+            class="ship-grid-header"
+            *ngFor="let H of horizontal"
+            id="PT-H-{{ H }}"
+          >
+            {{ H }}
+          </div>
+        </div>
+        <div class="ship-grid-row" *ngFor="let V of vertical">
+          <div class="ship-grid-header" id="PT-H-{{ V }}">{{ V }}</div>
+          <div
+            class="ship-grid-cell"
+            *ngFor="let H of horizontal"
+            id="PT-{{ V }}-{{ H }}"
+          >
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!--controls-->
+      <div>
+        <label for="vertical-select">Vertical</label>
+        <select id="vertical-select" (change)="verticalChanged($event)">
+          <option *ngFor="let v of vertical" value="{{ v }}">
+            {{ v }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="horizontal-select">Horizontal</label>
+        <select id="horizontal-select" (change)="horizontalChanged($event)">
+          <option *ngFor="let h of horizontal" value="{{ h }}">
+            {{ h }}
+          </option>
+        </select>
+      </div>
+      <div></div>
+    </div>
+  </div>
+  <div id="opponent-ships">
+    <div class="flex flex-wrap">
+      <div *ngFor="let ship of ships" id="ship-{{ ship.id }}" class="px-2 py-1">
+        {{ ship.Type }}
+      </div>
+    </div>
+  </div>
+</div>
