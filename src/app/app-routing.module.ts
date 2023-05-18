@@ -7,6 +7,7 @@ import { CodeBreakerScoreDetailComponent } from './code-breaker-score-detail/cod
 import { GuessWordComponent } from './guess-word/guess-word.component';
 import { GuessWordScoresComponent } from './guess-word-scores/guess-word-scores.component';
 import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-word-score-detail.component';
+import { SeaBattleComponent } from './sea-battle/sea-battle.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'guess_word', component: GuessWordComponent },
   { path: 'guess_word/scores', component: GuessWordScoresComponent },
   { path: 'guess_word/scores/:id', component: GuessWordScoreDetailComponent },
+  { path: 'sea_battle', component: SeaBattleComponent },
 ];
 
 @NgModule({

@@ -21,6 +21,9 @@ import { GuessWordHintListComponent } from './guess-word-hint-list/guess-word-hi
 import { GuessWordScoresComponent } from './guess-word-scores/guess-word-scores.component';
 import { GuessWordScoreRowComponent } from './guess-word-score-row/guess-word-score-row.component';
 import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-word-score-detail.component';
+import { SeaBattleComponent } from './sea-battle/sea-battle.component';
+import { SeaBattleOptionsComponent } from './sea-battle-options/sea-battle-options.component';
+import { SeaBattlePlacementComponent } from './sea-battle-placement/sea-battle-placement.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { GuessWordScoreDetailComponent } from './guess-word-score-detail/guess-w
     GuessWordScoresComponent,
     GuessWordScoreRowComponent,
     GuessWordScoreDetailComponent,
+    SeaBattleComponent,
+    SeaBattleOptionsComponent,
+    SeaBattlePlacementComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

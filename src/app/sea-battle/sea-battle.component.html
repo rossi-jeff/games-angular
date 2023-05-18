@@ -1,0 +1,15 @@
+<app-sea-battle-placement
+  *ngIf="game.Status == 'Playing' && shipsToPlace.length > 0"
+  [axis]="axis"
+  [shipsToPlace]="shipsToPlace"
+  (placeShip)="placeShip($event)"
+></app-sea-battle-placement>
+
+<app-sea-battle-options
+  (newGame)="newGame($event)"
+  *ngIf="game.Status != 'Playing'"
+></app-sea-battle-options>
+
+<div class="p-4">
+  {{ shipsToPlace | json }}
+</div>
