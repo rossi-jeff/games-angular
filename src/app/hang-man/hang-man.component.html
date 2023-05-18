@@ -1,0 +1,29 @@
+<app-hang-man-drawing
+  *ngIf="game.Status != undefined"
+  [wrong]="game.Wrong || ''"
+></app-hang-man-drawing>
+
+<app-hang-man-word
+  *ngIf="game.Status == 'Won' || game.Status == 'Lost'"
+  [word]="word.Word || ''"
+></app-hang-man-word>
+
+<app-hang-man-display
+  *ngIf="game.Status == 'Playing'"
+  [word]="word.Word || ''"
+  [correct]="game.Correct || ''"
+></app-hang-man-display>
+
+<app-hang-man-buttons
+  *ngIf="game.Status == 'Playing'"
+  [correct]="game.Correct || ''"
+  [wrong]="game.Wrong || ''"
+  (guess)="sendGuess($event)"
+></app-hang-man-buttons>
+
+<app-hang-man-options
+  *ngIf="game.Status != 'Playing'"
+  (newGame)="randomWord($event)"
+></app-hang-man-options>
+
+<button routerLink="/hang_man/scores">Scores</button>

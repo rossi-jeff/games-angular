@@ -30,6 +30,15 @@ import { SeaBattleShipDisplayComponent } from './sea-battle-ship-display/sea-bat
 import { SeaBattleScoresComponent } from './sea-battle-scores/sea-battle-scores.component';
 import { SeaBattleScoreDetailsComponent } from './sea-battle-score-details/sea-battle-score-details.component';
 import { SeaBattleScoreRowComponent } from './sea-battle-score-row/sea-battle-score-row.component';
+import { HangManComponent } from './hang-man/hang-man.component';
+import { HangManOptionsComponent } from './hang-man-options/hang-man-options.component';
+import { HangManButtonsComponent } from './hang-man-buttons/hang-man-buttons.component';
+import { HangManDisplayComponent } from './hang-man-display/hang-man-display.component';
+import { HangManDrawingComponent } from './hang-man-drawing/hang-man-drawing.component';
+import { HangManWordComponent } from './hang-man-word/hang-man-word.component';
+import { HangManScoresComponent } from './hang-man-scores/hang-man-scores.component';
+import { HangManScoreDetailsComponent } from './hang-man-score-details/hang-man-score-details.component';
+import { HangManScoreRowComponent } from './hang-man-score-row/hang-man-score-row.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +69,15 @@ import { SeaBattleScoreRowComponent } from './sea-battle-score-row/sea-battle-sc
     SeaBattleScoresComponent,
     SeaBattleScoreDetailsComponent,
     SeaBattleScoreRowComponent,
+    HangManComponent,
+    HangManOptionsComponent,
+    HangManButtonsComponent,
+    HangManDisplayComponent,
+    HangManDrawingComponent,
+    HangManWordComponent,
+    HangManScoresComponent,
+    HangManScoreDetailsComponent,
+    HangManScoreRowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

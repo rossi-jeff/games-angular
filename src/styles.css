@@ -110,3 +110,57 @@ div.Sunk span {
 div.Miss span {
   @apply h-8 w-8 inline-block rounded-full bg-blue-200;
 }
+.hang-man-buttons {
+  @apply flex flex-wrap justify-between;
+}
+.hang-man-buttons button {
+  @apply px-2 py-1 font-bold border border-black rounded;
+}
+.hang-man-buttons button.correct {
+  @apply border-green-900 text-green-900 bg-green-300;
+}
+.hang-man-buttons button.wrong {
+  @apply border-red-900 text-white bg-red-600;
+}
+.hang-man-display {
+  @apply flex flex-wrap;
+}
+.hang-man-display div {
+  @apply w-8 h-8 border-b border-b-black font-bold text-center mr-2;
+}
+#hang-man-drawing {
+  @apply w-[25rem] h-[30rem] border border-black rounded ml-4 mb-2 relative;
+}
+#gallows-top {
+  @apply w-[14rem] h-6 bg-amber-800 rounded absolute top-4 left-4;
+}
+#gallows-base {
+  @apply w-[22.75rem] h-6 bg-amber-800 rounded absolute left-4 bottom-4;
+}
+#gallows-left {
+  @apply w-6 h-[27rem] bg-amber-800 rounded absolute top-4 left-4;
+}
+#rope {
+  @apply w-2 h-10 bg-amber-700 absolute top-10 left-[12.5rem];
+}
+#head {
+  @apply h-12 w-12 bg-black rounded-full absolute top-20 left-[11.25rem] invisible;
+}
+#body {
+  @apply w-20 h-32 bg-black rounded absolute top-32 left-[10.25rem] invisible;
+}
+#left-arm {
+  @apply h-5 w-20 bg-black rounded absolute top-32 left-[5.3rem] invisible;
+}
+#right-arm {
+  @apply h-5 w-20 bg-black rounded absolute top-32 left-[15.2rem] invisible;
+}
+#left-leg {
+  @apply w-8 h-32 bg-black rounded absolute left-[10.25rem] top-64 invisible;
+}
+#right-leg {
+  @apply w-8 h-32 bg-black rounded absolute left-[13.3rem] top-64 invisible;
+}
+.visible {
+  visibility: visible !important;
+}

@@ -1,0 +1,39 @@
+<div class="rounded-box mx-4 p-4">
+  <div class="flex flex-wrap justify-between">
+    <div>
+      <label for="min-select">Min</label>
+      <select
+        name="min-select"
+        id="min-select"
+        (change)="lengthChanged($event)"
+      >
+        <option
+          *ngFor="let len of lengths"
+          value="{{ len }}"
+          [selected]="selected.Min == len"
+        >
+          {{ len }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="max-select">Max</label>
+      <select
+        name="max-select"
+        id="max-select"
+        (change)="lengthChanged($event)"
+      >
+        <option
+          *ngFor="let len of lengths"
+          value="{{ len }}"
+          [selected]="selected.Max == len"
+        >
+          {{ len }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button (click)="newGameClicked()">New Game</button>
+    </div>
+  </div>
+</div>

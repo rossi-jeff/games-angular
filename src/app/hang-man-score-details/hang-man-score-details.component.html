@@ -1,0 +1,15 @@
+<app-hang-man-drawing [wrong]="hangMan.Wrong || ''"></app-hang-man-drawing>
+
+<app-hang-man-word [word]="word.Word || ''"></app-hang-man-word>
+
+<app-hang-man-display
+  [word]="word.Word || ''"
+  [correct]="hangMan.Correct || ''"
+></app-hang-man-display>
+
+<app-hang-man-buttons
+  [correct]="hangMan.Correct || ''"
+  [wrong]="hangMan.Wrong || ''"
+></app-hang-man-buttons>
+
+<button routerLink="/hang_man/scores">Back to Scores</button>
