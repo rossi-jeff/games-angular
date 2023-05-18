@@ -1,3 +1,13 @@
+<app-hang-man-drawing
+  *ngIf="game.Status != undefined"
+  [wrong]="game.Wrong || ''"
+></app-hang-man-drawing>
+
+<app-hang-man-word
+  *ngIf="game.Status == 'Won' || game.Status == 'Lost'"
+  [word]="word.Word || ''"
+></app-hang-man-word>
+
 <app-hang-man-display
   *ngIf="game.Status == 'Playing'"
   [word]="word.Word || ''"
