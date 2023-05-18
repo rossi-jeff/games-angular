@@ -36,6 +36,9 @@ import { HangManButtonsComponent } from './hang-man-buttons/hang-man-buttons.com
 import { HangManDisplayComponent } from './hang-man-display/hang-man-display.component';
 import { HangManDrawingComponent } from './hang-man-drawing/hang-man-drawing.component';
 import { HangManWordComponent } from './hang-man-word/hang-man-word.component';
+import { HangManScoresComponent } from './hang-man-scores/hang-man-scores.component';
+import { HangManScoreDetailsComponent } from './hang-man-score-details/hang-man-score-details.component';
+import { HangManScoreRowComponent } from './hang-man-score-row/hang-man-score-row.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +75,9 @@ import { HangManWordComponent } from './hang-man-word/hang-man-word.component';
     HangManDisplayComponent,
     HangManDrawingComponent,
     HangManWordComponent,
+    HangManScoresComponent,
+    HangManScoreDetailsComponent,
+    HangManScoreRowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

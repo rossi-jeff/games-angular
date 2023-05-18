@@ -1,0 +1,23 @@
+<div class="flex flex-wrap justify-between mx-4">
+  <div>
+    <button routerLink="/hang_man/scores/{{ hangMan.id }}">Details</button>
+  </div>
+  <div>
+    {{ hangMan.user != null ? hangMan.user.UserName : "Anonymous" }}
+  </div>
+  <div>
+    {{ hangMan.Status }}
+  </div>
+  <div>
+    {{ hangMan.Score }}
+  </div>
+  <div>
+    {{ hangMan.Correct }}
+  </div>
+  <div>
+    {{ hangMan.Wrong }}
+  </div>
+  <div>
+    {{ hangMan.word != null ? hangMan.word.Word : "N/A" }}
+  </div>
+</div>
