@@ -1,0 +1,50 @@
+<div
+  class="rounded-box mx-4 mb-2 p4"
+  *ngIf="game && game.NumTurns != undefined && game.NumTurns < 12"
+>
+  <app-yacht-roll
+    *ngIf="turn && turn.RollOne != undefined && turn.RollOne != ''"
+    [roll]="turn.RollOne"
+    [flag]="flags['keepOne']"
+    label="Roll Two"
+    heading="First Roll"
+    (rollDice)="secondRoll($event)"
+  ></app-yacht-roll>
+  <div *ngIf="turn.RollOne == undefined">
+    <button (click)="firstRoll()">First Roll</button>
+  </div>
+
+  <app-yacht-roll
+    *ngIf="turn && turn.RollTwo != undefined && turn.RollTwo != ''"
+    [roll]="turn.RollTwo"
+    [flag]="flags['keepTwo']"
+    label="Roll Three"
+    heading="Second Roll"
+    (rollDice)="thirdRoll($event)"
+  ></app-yacht-roll>
+
+  <app-yacht-roll
+    *ngIf="turn && turn.RollThree != undefined && turn.RollThree != ''"
+    [roll]="turn.RollThree"
+    [flag]="true"
+    heading="Third Roll"
+  ></app-yacht-roll>
+
+  <app-yacht-score-options
+    *ngIf="options.length > 0"
+    [options]="options"
+    (score)="score($event)"
+  ></app-yacht-score-options>
+</div>
+
+<app-yacht-score-card
+  *ngIf="game.turns && game.turns.length > 0"
+  [turns]="game.turns"
+  [score]="game.Total || 0"
+></app-yacht-score-card>
+
+<div *ngIf="game.NumTurns == undefined || game.NumTurns >= 12">
+  <button (click)="newGame()">New Game</button>
+</div>
+
+<button routerLink="/yacht/scores">Scores</button>

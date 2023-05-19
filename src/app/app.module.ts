@@ -39,6 +39,14 @@ import { HangManWordComponent } from './hang-man-word/hang-man-word.component';
 import { HangManScoresComponent } from './hang-man-scores/hang-man-scores.component';
 import { HangManScoreDetailsComponent } from './hang-man-score-details/hang-man-score-details.component';
 import { HangManScoreRowComponent } from './hang-man-score-row/hang-man-score-row.component';
+import { YachtComponent } from './yacht/yacht.component';
+import { YachtRollComponent } from './yacht-roll/yacht-roll.component';
+import { YachtScoreOptionsComponent } from './yacht-score-options/yacht-score-options.component';
+import { YachtScoreCardComponent } from './yacht-score-card/yacht-score-card.component';
+import { SmallDiceRollComponent } from './small-dice-roll/small-dice-roll.component';
+import { YachtScoresComponent } from './yacht-scores/yacht-scores.component';
+import { YachtScoreDetailsComponent } from './yacht-score-details/yacht-score-details.component';
+import { YachtScoreRowComponent } from './yacht-score-row/yacht-score-row.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +86,14 @@ import { HangManScoreRowComponent } from './hang-man-score-row/hang-man-score-ro
     HangManScoresComponent,
     HangManScoreDetailsComponent,
     HangManScoreRowComponent,
+    YachtComponent,
+    YachtRollComponent,
+    YachtScoreOptionsComponent,
+    YachtScoreCardComponent,
+    SmallDiceRollComponent,
+    YachtScoresComponent,
+    YachtScoreDetailsComponent,
+    YachtScoreRowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

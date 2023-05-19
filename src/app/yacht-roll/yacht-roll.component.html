@@ -1,0 +1,25 @@
+<div class="rounded-box mx-2 mb-2 p-2">
+  <h2>{{ heading }}</h2>
+  <div class="flex flex-wrap justify-between">
+    <div *ngFor="let d of dice; let i = index" class="max-w-fit">
+      <img
+        src="/assets/dice/dice-{{ d }}.svg"
+        alt="Die {{ d }}"
+        class="w-20 h-20"
+      />
+      <div class="text-center">
+        <input
+          type="checkbox"
+          name="die-{{ i }}"
+          id="die-{{ i }}"
+          [value]="i"
+          (change)="checkChanged($event)"
+          [disabled]="flag"
+        />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!flag">
+    <button (click)="rollClicked()">{{ label }}</button>
+  </div>
+</div>

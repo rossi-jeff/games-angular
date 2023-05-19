@@ -1,0 +1,11 @@
+<div class="flex flex-wrap justify-between mx-4">
+  <div>
+    <button routerLink="/yacht/scores/{{ yacht.id }}">Details</button>
+  </div>
+  <div>
+    {{ yacht.user != null ? yacht.user.UserName : "Anonymous" }}
+  </div>
+  <div>
+    {{ yacht.Total }}
+  </div>
+</div>
