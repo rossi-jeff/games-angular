@@ -1,0 +1,11 @@
+<app-ten-grand-current-turn
+  *ngIf="game.Status == 'Playing'"
+  [game]="game"
+  (reload)="reloadGame()"
+></app-ten-grand-current-turn>
+
+<app-ten-grand-score-card [turns]="game.turns || []"></app-ten-grand-score-card>
+
+<div *ngIf="game.Status != 'Playing'">
+  <button (click)="newGame()">New Game</button>
+</div>

@@ -1,0 +1,19 @@
+<div id="'ten-grand-options">
+  <div *ngFor="let option of options; let i = index" class="flex flex-wrap">
+    <div class="w-4">
+      <input
+        type="checkbox"
+        name="options"
+        [value]="i"
+        (change)="checkboxChecked($event)"
+      />
+    </div>
+    <div class="flex-grow">
+      {{ option.Category }}
+    </div>
+    <div>
+      {{ option.Score }}
+    </div>
+  </div>
+  <button (click)="scoreClicked()">Score Options</button>
+</div>

@@ -1,0 +1,6 @@
+<div class="rounded-box mx-4 mb-2 p-4 overflow-y-auto" *ngIf="turns.length > 0">
+  <app-ten-grand-turn
+    *ngFor="let turn of turns"
+    [turn]="turn"
+  ></app-ten-grand-turn>
+</div>

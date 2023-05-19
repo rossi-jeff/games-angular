@@ -47,6 +47,11 @@ import { SmallDiceRollComponent } from './small-dice-roll/small-dice-roll.compon
 import { YachtScoresComponent } from './yacht-scores/yacht-scores.component';
 import { YachtScoreDetailsComponent } from './yacht-score-details/yacht-score-details.component';
 import { YachtScoreRowComponent } from './yacht-score-row/yacht-score-row.component';
+import { TenGrandComponent } from './ten-grand/ten-grand.component';
+import { TenGrandCurrentTurnComponent } from './ten-grand-current-turn/ten-grand-current-turn.component';
+import { TenGrandScoreCardComponent } from './ten-grand-score-card/ten-grand-score-card.component';
+import { TenGrandTurnComponent } from './ten-grand-turn/ten-grand-turn.component';
+import { TenGrandOptionsComponent } from './ten-grand-options/ten-grand-options.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +99,11 @@ import { YachtScoreRowComponent } from './yacht-score-row/yacht-score-row.compon
     YachtScoresComponent,
     YachtScoreDetailsComponent,
     YachtScoreRowComponent,
+    TenGrandComponent,
+    TenGrandCurrentTurnComponent,
+    TenGrandScoreCardComponent,
+    TenGrandTurnComponent,
+    TenGrandOptionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
