@@ -1,0 +1,61 @@
+<div class="rounded-box mx-4 mb-2 p-4">
+  <div class="flex flex-wrap mb-2">
+    <div
+      id="roll-dice"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <div
+        *ngFor="let d of rollDice; let i = index"
+        class="max-w-fit cursor-move"
+        id="roll-{{ d }}-{{ i }}"
+        draggable="true"
+        (dragstart)="dragStart($event)"
+      >
+        <img
+          src="/assets/dice/dice-{{ d }}.svg"
+          alt="Die {{ d }}"
+          class="w-16 h-16"
+          draggable="false"
+        />
+      </div>
+    </div>
+    <div
+      id="score-dice"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <div
+        *ngFor="let d of scoreDice; let i = index"
+        class="max-w-fit cursor-move"
+        id="score-{{ d }}-{{ i }}"
+        draggable="true"
+        (dragstart)="dragStart($event)"
+      >
+        <img
+          src="/assets/dice/dice-{{ d }}.svg"
+          alt="Die {{ d }}"
+          class="w-16 h-16"
+          draggable="false"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="rounded-box p-2 mb-2" *ngIf="options.length > 0">
+    <app-ten-grand-options
+      [options]="options"
+      (score)="score($event)"
+    ></app-ten-grand-options>
+  </div>
+  <div *ngIf="options.length == 0">
+    <button (click)="roll()">Roll</button>
+  </div>
+  <div
+    class="rounded-box p-2 mb-2"
+    *ngIf="turn && turn.scores && turn.scores.length > 0"
+  >
+    <app-ten-grand-turn [turn]="turn"></app-ten-grand-turn>
+  </div>
+</div>

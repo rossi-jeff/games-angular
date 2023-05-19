@@ -164,3 +164,7 @@ div.Miss span {
 .visible {
   visibility: visible !important;
 }
+#roll-dice,
+#score-dice {
+  @apply flex flex-wrap h-20 max-w-fit min-w-[10rem] px-2 py-2 mr-2 border border-dashed rounded border-black;
+}

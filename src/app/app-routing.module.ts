@@ -16,6 +16,9 @@ import { HangManScoreDetailsComponent } from './hang-man-score-details/hang-man-
 import { YachtComponent } from './yacht/yacht.component';
 import { YachtScoresComponent } from './yacht-scores/yacht-scores.component';
 import { YachtScoreDetailsComponent } from './yacht-score-details/yacht-score-details.component';
+import { TenGrandComponent } from './ten-grand/ten-grand.component';
+import { TenGrandScoresComponent } from './ten-grand-scores/ten-grand-scores.component';
+import { TenGrandScoreDetailsComponent } from './ten-grand-score-details/ten-grand-score-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +40,9 @@ const routes: Routes = [
   { path: 'yacht', component: YachtComponent },
   { path: 'yacht/scores', component: YachtScoresComponent },
   { path: 'yacht/scores/:id', component: YachtScoreDetailsComponent },
+  { path: 'ten_grand', component: TenGrandComponent },
+  { path: 'ten_grand/scores', component: TenGrandScoresComponent },
+  { path: 'ten_grand/scores/:id', component: TenGrandScoreDetailsComponent },
 ];
 
 @NgModule({
