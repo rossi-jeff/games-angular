@@ -44,6 +44,9 @@ import { YachtRollComponent } from './yacht-roll/yacht-roll.component';
 import { YachtScoreOptionsComponent } from './yacht-score-options/yacht-score-options.component';
 import { YachtScoreCardComponent } from './yacht-score-card/yacht-score-card.component';
 import { SmallDiceRollComponent } from './small-dice-roll/small-dice-roll.component';
+import { YachtScoresComponent } from './yacht-scores/yacht-scores.component';
+import { YachtScoreDetailsComponent } from './yacht-score-details/yacht-score-details.component';
+import { YachtScoreRowComponent } from './yacht-score-row/yacht-score-row.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +91,9 @@ import { SmallDiceRollComponent } from './small-dice-roll/small-dice-roll.compon
     YachtScoreOptionsComponent,
     YachtScoreCardComponent,
     SmallDiceRollComponent,
+    YachtScoresComponent,
+    YachtScoreDetailsComponent,
+    YachtScoreRowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

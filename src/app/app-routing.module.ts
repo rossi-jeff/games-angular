@@ -14,6 +14,8 @@ import { HangManComponent } from './hang-man/hang-man.component';
 import { HangManScoresComponent } from './hang-man-scores/hang-man-scores.component';
 import { HangManScoreDetailsComponent } from './hang-man-score-details/hang-man-score-details.component';
 import { YachtComponent } from './yacht/yacht.component';
+import { YachtScoresComponent } from './yacht-scores/yacht-scores.component';
+import { YachtScoreDetailsComponent } from './yacht-score-details/yacht-score-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'hang_man/scores', component: HangManScoresComponent },
   { path: 'hang_man/scores/:id', component: HangManScoreDetailsComponent },
   { path: 'yacht', component: YachtComponent },
+  { path: 'yacht/scores', component: YachtScoresComponent },
+  { path: 'yacht/scores/:id', component: YachtScoreDetailsComponent },
 ];
 
 @NgModule({
