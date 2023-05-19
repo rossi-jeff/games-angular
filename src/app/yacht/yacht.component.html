@@ -33,8 +33,20 @@
   <app-yacht-score-options
     *ngIf="options.length > 0"
     [options]="options"
+    (score)="score($event)"
   ></app-yacht-score-options>
 </div>
+
+<app-yacht-score-card
+  *ngIf="game.turns && game.turns.length > 0"
+  [turns]="game.turns"
+  [score]="game.Total || 0"
+></app-yacht-score-card>
+
 <div *ngIf="game.NumTurns == undefined || game.NumTurns >= 12">
   <button (click)="newGame()">New Game</button>
+</div>
+
+<div class="p-4">
+  {{ game | json }}
 </div>

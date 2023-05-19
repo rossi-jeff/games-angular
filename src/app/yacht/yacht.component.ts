@@ -55,7 +55,21 @@ export class YachtComponent {
   };
 
   score = (ev: any) => {
-    console.log(ev);
+    if (!this.game.id) return;
+    const { Category } = ev;
+    const TurnId = this.turn.id || 0;
+    this.api
+      .post({
+        path: `api/yacht/${this.game.id}/score`,
+        body: { Category, TurnId },
+      })
+      .subscribe(() => {
+        this.turn = {};
+        this.options = [];
+        this.flags['keepOne'] = false;
+        this.flags['keepTwo'] = false;
+        this.reloadGame();
+      });
   };
 
   reloadGame = () => {

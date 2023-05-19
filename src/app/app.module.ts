@@ -42,6 +42,8 @@ import { HangManScoreRowComponent } from './hang-man-score-row/hang-man-score-ro
 import { YachtComponent } from './yacht/yacht.component';
 import { YachtRollComponent } from './yacht-roll/yacht-roll.component';
 import { YachtScoreOptionsComponent } from './yacht-score-options/yacht-score-options.component';
+import { YachtScoreCardComponent } from './yacht-score-card/yacht-score-card.component';
+import { SmallDiceRollComponent } from './small-dice-roll/small-dice-roll.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { YachtScoreOptionsComponent } from './yacht-score-options/yacht-score-op
     YachtComponent,
     YachtRollComponent,
     YachtScoreOptionsComponent,
+    YachtScoreCardComponent,
+    SmallDiceRollComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

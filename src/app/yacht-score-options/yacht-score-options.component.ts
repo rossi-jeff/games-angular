@@ -1,5 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { YachtScoreOption } from '../../types/yacht-score-option.type';
+import { YachtCategory } from '../../enum/yacht-category.enum';
+
+type ScoreType = { Category: YachtCategory };
 
 @Component({
   selector: 'app-yacht-score-options',
@@ -8,4 +11,16 @@ import { YachtScoreOption } from '../../types/yacht-score-option.type';
 })
 export class YachtScoreOptionsComponent {
   @Input() options!: YachtScoreOption[];
+  @Output() score = new EventEmitter<ScoreType>();
+  selected: number = 0;
+
+  radioClicked = (idx: number) => {
+    this.selected = idx;
+  };
+
+  scoreClicked = () => {
+    const option = this.options[this.selected];
+    const { Category } = option;
+    if (Category) this.score.emit({ Category });
+  };
 }
