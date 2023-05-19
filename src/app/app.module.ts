@@ -39,6 +39,9 @@ import { HangManWordComponent } from './hang-man-word/hang-man-word.component';
 import { HangManScoresComponent } from './hang-man-scores/hang-man-scores.component';
 import { HangManScoreDetailsComponent } from './hang-man-score-details/hang-man-score-details.component';
 import { HangManScoreRowComponent } from './hang-man-score-row/hang-man-score-row.component';
+import { YachtComponent } from './yacht/yacht.component';
+import { YachtRollComponent } from './yacht-roll/yacht-roll.component';
+import { YachtScoreOptionsComponent } from './yacht-score-options/yacht-score-options.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +81,9 @@ import { HangManScoreRowComponent } from './hang-man-score-row/hang-man-score-ro
     HangManScoresComponent,
     HangManScoreDetailsComponent,
     HangManScoreRowComponent,
+    YachtComponent,
+    YachtRollComponent,
+    YachtScoreOptionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

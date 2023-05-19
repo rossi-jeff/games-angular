@@ -13,6 +13,7 @@ import { SeaBattleScoreDetailsComponent } from './sea-battle-score-details/sea-b
 import { HangManComponent } from './hang-man/hang-man.component';
 import { HangManScoresComponent } from './hang-man-scores/hang-man-scores.component';
 import { HangManScoreDetailsComponent } from './hang-man-score-details/hang-man-score-details.component';
+import { YachtComponent } from './yacht/yacht.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'hang_man', component: HangManComponent },
   { path: 'hang_man/scores', component: HangManScoresComponent },
   { path: 'hang_man/scores/:id', component: HangManScoreDetailsComponent },
+  { path: 'yacht', component: YachtComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,14 @@
+<div class="rounded-box mx-2 mb-2 p-2">
+  <div *ngFor="let option of options; let i = index" class="flex flex-wrap">
+    <div class="w-8">
+      <input type="radio" name="option" [value]="i" />
+    </div>
+    <div class="flex-grow">
+      {{ option.Category }}
+    </div>
+    <div class="w-12 text-right">
+      {{ option.Score }}
+    </div>
+  </div>
+  <button>Score Turn</button>
+</div>
