@@ -1,0 +1,279 @@
+<div id="button-bar">
+  <button (click)="deal()" *ngIf="game.Status != 'Playing'">Deal</button>
+  <button *ngIf="game.Status == 'Playing'" (click)="quit()">Quit</button>
+  <button
+    *ngIf="game.Status == 'Playing' && canAutoComplete"
+    (click)="autoComplete()"
+  >
+    Auto Complete
+  </button>
+  <div class="mr-4">
+    <strong>Moves</strong>
+    {{ moves }}
+  </div>
+  <div class="mr-4">
+    <strong>Time</strong>
+    {{ clock.formatted() }}
+  </div>
+  <button routerLink="/free_cell/scores">Scores</button>
+</div>
+<div class="free-cell-top-row">
+  <div class="free-cells">
+    <div
+      class="card-container"
+      id="free-0"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of free[0]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="free-0"
+        (dragged)="dragStart($event)"
+      ></app-playing-card>
+    </div>
+    <div
+      class="card-container"
+      id="free-1"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of free[1]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="free-1"
+        (dragged)="dragStart($event)"
+      ></app-playing-card>
+    </div>
+    <div
+      class="card-container"
+      id="free-2"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of free[2]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="free-2"
+        (dragged)="dragStart($event)"
+      ></app-playing-card>
+    </div>
+    <div
+      class="card-container"
+      id="free-3"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of free[3]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="free-3"
+        (dragged)="dragStart($event)"
+      ></app-playing-card>
+    </div>
+  </div>
+  <div class="ace-cells">
+    <div
+      class="card-container"
+      id="aces-0"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of aces[0]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="aces-0"
+      ></app-playing-card>
+    </div>
+    <div
+      class="card-container"
+      id="aces-1"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of aces[1]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="aces-1"
+      ></app-playing-card>
+    </div>
+    <div
+      class="card-container"
+      id="aces-2"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of aces[2]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="aces-2"
+      ></app-playing-card>
+    </div>
+    <div
+      class="card-container"
+      id="aces-3"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
+      <app-playing-card
+        *ngFor="let card of aces[3]; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="aces-3"
+      ></app-playing-card>
+    </div>
+  </div>
+</div>
+<div class="tableau-cells">
+  <div
+    class="card-container"
+    id="tableau-0"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[0]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-0"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+  <div
+    class="card-container"
+    id="tableau-1"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[1]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-1"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+  <div
+    class="card-container"
+    id="tableau-2"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[2]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-2"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+  <div
+    class="card-container"
+    id="tableau-3"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[3]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-3"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+  <div
+    class="card-container"
+    id="tableau-4"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[4]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-4"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+  <div
+    class="card-container"
+    id="tableau-5"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[5]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-5"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+  <div
+    class="card-container"
+    id="tableau-6"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[6]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-6"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+  <div
+    class="card-container"
+    id="tableau-7"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
+    <app-playing-card
+      *ngFor="let card of tableau[7]; let i = index"
+      [card]="card"
+      level="{{ i }}"
+      index="{{ i }}"
+      from="tableau-7"
+      (dragged)="dragStart($event)"
+    ></app-playing-card>
+  </div>
+</div>

@@ -38,4 +38,16 @@ export class ApiService {
       }
     );
   }
+
+  public patch(options: { path: string; body: { [key: string]: any } }) {
+    return this.http.patch(
+      `${this.baseUrl}/${options.path}`,
+      { ...options.body },
+      {
+        headers: this.headers,
+        observe: 'body',
+        responseType: 'json',
+      }
+    );
+  }
 }

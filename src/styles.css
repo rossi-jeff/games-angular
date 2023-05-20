@@ -168,3 +168,34 @@ div.Miss span {
 #score-dice {
   @apply flex flex-wrap h-20 max-w-fit min-w-[10rem] px-2 py-2 mr-2 border border-dashed rounded border-black;
 }
+.card-container {
+  @apply border border-dashed border-black rounded w-28 h-[9.5rem] p-0 relative;
+}
+.free-cell-top-row {
+  @apply flex flex-wrap justify-between my-4 mx-4;
+}
+.free-cells,
+.ace-cells {
+  @apply flex flex-wrap;
+}
+.free-cells .card-container {
+  @apply mr-4;
+}
+.ace-cells .card-container {
+  @apply ml-4;
+}
+.tableau-cells {
+  @apply flex flex-wrap justify-between mx-4;
+}
+.playing-card {
+  @apply w-24 h-32 p-0 absolute left-2;
+}
+.over {
+  @apply border-red-500;
+}
+#button-bar {
+  @apply flex flex-wrap mx-4;
+}
+#button-bar button {
+  @apply mr-4;
+}
