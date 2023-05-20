@@ -1,5 +1,17 @@
-<button (click)="deal()">Deal</button>
-
+<div id="button-bar">
+  <button (click)="deal()" *ngIf="game.Status != 'Playing'">Deal</button>
+  <button *ngIf="game.Status == 'Playing'" (click)="quit()">Quit</button>
+  <button
+    *ngIf="game.Status == 'Playing' && canAutoComplete"
+    (click)="autoComplete()"
+  >
+    Auto Complete
+  </button>
+  <div>
+    <strong>Moves</strong>
+    {{ moves }}
+  </div>
+</div>
 <div class="free-cell-top-row">
   <div class="free-cells">
     <div
@@ -44,7 +56,7 @@
       <app-playing-card
         *ngFor="let card of free[2]; let i = index"
         [card]="card"
-        [level="0"
+        level="0"
         index="{{ i }}"
         from="free-2"
         (dragged)="dragStart($event)"

@@ -193,3 +193,9 @@ div.Miss span {
 .over {
   @apply border-red-500;
 }
+#button-bar {
+  @apply flex flex-wrap mx-4;
+}
+#button-bar button {
+  @apply mr-4;
+}
