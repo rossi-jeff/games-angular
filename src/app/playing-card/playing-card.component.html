@@ -1,0 +1,15 @@
+<div
+  id="{{ id }}"
+  class="playing-card"
+  [draggable]="card.draggable"
+  (click)="cardClicked()"
+  (dragstart)="cardDragged($event)"
+>
+  <img
+    src="{{ src }}"
+    alt="{{ alt }}"
+    class="playing-card-image"
+    draggable="false"
+    (click)="cardClicked()"
+  />
+</div>

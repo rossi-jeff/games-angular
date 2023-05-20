@@ -55,6 +55,8 @@ import { TenGrandOptionsComponent } from './ten-grand-options/ten-grand-options.
 import { TenGrandScoresComponent } from './ten-grand-scores/ten-grand-scores.component';
 import { TenGrandScoreDetailsComponent } from './ten-grand-score-details/ten-grand-score-details.component';
 import { TenGrandScoreRowComponent } from './ten-grand-score-row/ten-grand-score-row.component';
+import { FreeCellComponent } from './free-cell/free-cell.component';
+import { PlayingCardComponent } from './playing-card/playing-card.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +112,8 @@ import { TenGrandScoreRowComponent } from './ten-grand-score-row/ten-grand-score
     TenGrandScoresComponent,
     TenGrandScoreDetailsComponent,
     TenGrandScoreRowComponent,
+    FreeCellComponent,
+    PlayingCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
