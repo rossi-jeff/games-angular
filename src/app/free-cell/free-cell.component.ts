@@ -3,6 +3,8 @@ import { Deck } from '../../lib/deck.class';
 import { Card, CardContainer } from '../../lib/card.class';
 import { Klondike } from '../../types/klondike.type';
 import { GameStatus } from '../../enum/game-status.enum';
+import { Clock } from '../../lib/clock.class';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-free-cell',
@@ -18,6 +20,9 @@ export class FreeCellComponent {
   card: Card | undefined;
   canAutoComplete: boolean = false;
   moves: number = 0;
+  clock: Clock = new Clock();
+
+  constructor(private api: ApiService) {}
 
   deal = () => {
     this.deck = new Deck();
@@ -40,13 +45,37 @@ export class FreeCellComponent {
       counter++;
       if (counter >= 8) counter = 0;
     }
-    this.game.Status = GameStatus.Playing;
     this.moves = 0;
     this.adjustDraggable();
+    this.createGame();
+  };
+
+  createGame = () => {
+    this.api.post({ path: 'api/free_cell', body: {} }).subscribe((result) => {
+      this.game = result;
+      this.clock.run();
+    });
+  };
+
+  updateGame = (Status: GameStatus) => {
+    if (!this.game.id) return;
+    const { moves: Moves } = this;
+    const Elapsed = this.clock.elapsed();
+    this.api
+      .patch({
+        path: `api/free_cell/${this.game.id}`,
+        body: { Status, Moves, Elapsed },
+      })
+      .subscribe((result) => (this.game = result));
   };
 
   quit = () => {
-    this.game.Status = GameStatus.Lost;
+    this.clock.pause();
+    for (let i = 0; i < 4; i++) {
+      this.aces[i] = [];
+      this.free[i] = [];
+    }
+    this.updateGame(GameStatus.Lost);
   };
 
   countAces = () => {
@@ -81,7 +110,10 @@ export class FreeCellComponent {
       if (!allDescending) break;
     }
     this.canAutoComplete = allDescending;
-    if (aceCount == 52) this.game.Status = GameStatus.Won;
+    if (aceCount == 52) {
+      this.clock.pause();
+      this.updateGame(GameStatus.Won);
+    }
   };
 
   autoComplete = () => {

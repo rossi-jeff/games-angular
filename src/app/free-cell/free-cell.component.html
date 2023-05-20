@@ -7,10 +7,15 @@
   >
     Auto Complete
   </button>
-  <div>
+  <div class="mr-4">
     <strong>Moves</strong>
     {{ moves }}
   </div>
+  <div class="mr-4">
+    <strong>Time</strong>
+    {{ clock.formatted() }}
+  </div>
+  <button routerLink="/free_cell/scores">Scores</button>
 </div>
 <div class="free-cell-top-row">
   <div class="free-cells">

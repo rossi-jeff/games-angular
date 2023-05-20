@@ -20,6 +20,7 @@ import { TenGrandComponent } from './ten-grand/ten-grand.component';
 import { TenGrandScoresComponent } from './ten-grand-scores/ten-grand-scores.component';
 import { TenGrandScoreDetailsComponent } from './ten-grand-score-details/ten-grand-score-details.component';
 import { FreeCellComponent } from './free-cell/free-cell.component';
+import { FreeCellScoresComponent } from './free-cell-scores/free-cell-scores.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'ten_grand/scores', component: TenGrandScoresComponent },
   { path: 'ten_grand/scores/:id', component: TenGrandScoreDetailsComponent },
   { path: 'free_cell', component: FreeCellComponent },
+  { path: 'free_cell/scores', component: FreeCellScoresComponent },
 ];
 
 @NgModule({

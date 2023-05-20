@@ -1,0 +1,14 @@
+<div class="flex flex-wrap justify-between mx-4">
+  <div>
+    {{ freeCell.user != null ? freeCell.user.UserName : "Anonymous" }}
+  </div>
+  <div>
+    {{ freeCell.Status }}
+  </div>
+  <div>
+    {{ formatSeconds(freeCell.Elapsed || 0) }}
+  </div>
+  <div>
+    {{ freeCell.Moves }}
+  </div>
+</div>
