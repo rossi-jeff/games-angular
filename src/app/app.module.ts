@@ -60,6 +60,8 @@ import { PlayingCardComponent } from './playing-card/playing-card.component';
 import { FreeCellScoresComponent } from './free-cell-scores/free-cell-scores.component';
 import { FreeCellScoreRowComponent } from './free-cell-score-row/free-cell-score-row.component';
 import { KlondikeComponent } from './klondike/klondike.component';
+import { KlondikeScoresComponent } from './klondike-scores/klondike-scores.component';
+import { KlondikeScoreRowComponent } from './klondike-score-row/klondike-score-row.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +122,8 @@ import { KlondikeComponent } from './klondike/klondike.component';
     FreeCellScoresComponent,
     FreeCellScoreRowComponent,
     KlondikeComponent,
+    KlondikeScoresComponent,
+    KlondikeScoreRowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

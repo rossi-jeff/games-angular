@@ -22,6 +22,7 @@ import { TenGrandScoreDetailsComponent } from './ten-grand-score-details/ten-gra
 import { FreeCellComponent } from './free-cell/free-cell.component';
 import { FreeCellScoresComponent } from './free-cell-scores/free-cell-scores.component';
 import { KlondikeComponent } from './klondike/klondike.component';
+import { KlondikeScoresComponent } from './klondike-scores/klondike-scores.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'free_cell', component: FreeCellComponent },
   { path: 'free_cell/scores', component: FreeCellScoresComponent },
   { path: 'klondike', component: KlondikeComponent },
+  { path: 'klondike/scores', component: KlondikeScoresComponent },
 ];
 
 @NgModule({
