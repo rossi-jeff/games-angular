@@ -16,8 +16,16 @@ export class PlayingCardComponent {
     const top = parseInt(this.level) * 1.5 + 0.5;
     setTimeout(() => {
       const el = document.getElementById(this.id);
-      if (el) el.style.top = `${top}rem`;
-    }, 100);
+      if (el) {
+        el.style.top = `${top}rem`;
+        card.draggable
+          ? el.classList.add('draggable')
+          : el.classList.remove('draggable');
+        card.clickable
+          ? el.classList.add('clickable')
+          : el.classList.remove('clickable');
+      }
+    }, 0);
   }
   get card() {
     return this._card;

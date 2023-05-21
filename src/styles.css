@@ -202,3 +202,9 @@ div.Miss span {
 #button-bar button {
   @apply mr-4;
 }
+.draggable {
+  @apply cursor-move;
+}
+.clickable {
+  @apply cursor-pointer;
+}
