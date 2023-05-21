@@ -4,6 +4,7 @@ import { Deck } from '../../lib/deck.class';
 import { Card, CardContainer } from '../../lib/card.class';
 import { Clock } from '../../lib/clock.class';
 import { Klondike } from '../../types/klondike.type';
+import { GameStatus } from '../../enum/game-status.enum';
 
 @Component({
   selector: 'app-klondike',
@@ -55,11 +56,127 @@ export class KlondikeComponent {
         this.stock.push(this.card);
       }
     }
+    this.moves = 0;
+    this.createGame();
   };
 
-  quit = () => {};
+  createGame = () => {
+    this.api.post({ path: 'api/klondike', body: {} }).subscribe((result) => {
+      this.game = result;
+      this.clock.run();
+    });
+  };
 
-  autoComplete = () => {};
+  updateGame = (Status: GameStatus) => {
+    if (!this.game.id) return;
+    const { moves: Moves } = this;
+    const Elapsed = this.clock.elapsed();
+    this.api
+      .patch({
+        path: `api/klondike/${this.game.id}`,
+        body: { Status, Moves, Elapsed },
+      })
+      .subscribe((result) => (this.game = result));
+  };
+
+  quit = () => {
+    this.clock.pause();
+    this.stock = [];
+    this.waste = [];
+    for (let i = 0; i < 4; i++) {
+      this.aces[i] = [];
+    }
+    for (let i = 0; i < 7; i++) {
+      this.tableau[i] = [];
+    }
+    this.updateGame(GameStatus.Lost);
+  };
+
+  checkStatus = () => {
+    let hiddenCount = 0;
+    for (let i = 0; i < 7; i++) {
+      for (const card of this.tableau[i]) if (card.facedown) hiddenCount++;
+    }
+    this.canAutoComplete =
+      hiddenCount == 0 && this.stock.length == 0 && this.waste.length == 0;
+    if (this.countAces() == 52) {
+      this.clock.pause();
+      this.updateGame(GameStatus.Won);
+    }
+  };
+
+  countAces = () => {
+    let count = 0;
+    for (let i = 0; i < 4; i++) count += this.aces[i].length;
+    return count;
+  };
+
+  autoComplete = () => {
+    let from: string = '';
+    let to: string = '';
+    let lowestCard: Card | undefined;
+    let topCard: Card | undefined;
+    const { deck } = this;
+    for (let i = 0; i < 7; i++) {
+      if (this.tableau[i].length) {
+        topCard = this.tableau[i][this.tableau[i].length - 1];
+        if (
+          !lowestCard ||
+          deck.faces.indexOf(topCard.face) < deck.faces.indexOf(lowestCard.face)
+        ) {
+          lowestCard = topCard;
+          from = `tableau-${i}`;
+        }
+      }
+    }
+    topCard = undefined;
+    if (lowestCard && from) {
+      for (let i = 0; i < 4; i++) {
+        if (this.aces[i].length) {
+          topCard = this.aces[i][this.aces[i].length - 1];
+          if (
+            topCard &&
+            topCard.suit == lowestCard.suit &&
+            deck.faces.indexOf(lowestCard.face) ==
+              deck.faces.indexOf(topCard.face) + 1
+          ) {
+            to = `aces-${i}`;
+            break;
+          }
+        } else {
+          if (lowestCard.face == 'ace') {
+            to = `aces-${i}`;
+            break;
+          }
+        }
+      }
+      if (to) this.autoMoveCard(from, to);
+    }
+  };
+
+  autoMoveCard = (from: string, to: string) => {
+    const [fromType, fromIdx] = from.split('-');
+    const [_, toIdx] = to.split('-');
+    let card: Card | undefined;
+    switch (fromType) {
+      case 'waste':
+        card = this.waste.pop();
+        break;
+      case 'aces':
+        card = this.aces[parseInt(fromIdx)].pop();
+        break;
+      case 'tableau':
+        card = this.tableau[parseInt(fromIdx)].pop();
+        break;
+    }
+    if (!card) return;
+    this.aces[parseInt(toIdx)].push(card);
+    this.moves++;
+    this.checkStatus();
+    setTimeout(() => {
+      this.autoComplete();
+    }, 250);
+  };
 
   stockClicked = (event: any) => {
     const { id } = event;
@@ -71,6 +188,7 @@ export class KlondikeComponent {
         this.card.draggable = true;
         this.card.facedown = false;
         this.waste.push(this.card);
+        this.moves++;
       } else {
         this.stock.push(this.card);
       }
@@ -195,6 +313,7 @@ export class KlondikeComponent {
         break;
     }
     this.moves++;
+    this.checkStatus();
   };
 
   canDrop = (from: string, to: string, cardId: number) => {
