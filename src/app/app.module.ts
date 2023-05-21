@@ -62,6 +62,9 @@ import { FreeCellScoreRowComponent } from './free-cell-score-row/free-cell-score
 import { KlondikeComponent } from './klondike/klondike.component';
 import { KlondikeScoresComponent } from './klondike-scores/klondike-scores.component';
 import { KlondikeScoreRowComponent } from './klondike-score-row/klondike-score-row.component';
+import { ConcentrationComponent } from './concentration/concentration.component';
+import { ConcentrationScoresComponent } from './concentration-scores/concentration-scores.component';
+import { ConcentrationScoreRowComponent } from './concentration-score-row/concentration-score-row.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +127,9 @@ import { KlondikeScoreRowComponent } from './klondike-score-row/klondike-score-r
     KlondikeComponent,
     KlondikeScoresComponent,
     KlondikeScoreRowComponent,
+    ConcentrationComponent,
+    ConcentrationScoresComponent,
+    ConcentrationScoreRowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
