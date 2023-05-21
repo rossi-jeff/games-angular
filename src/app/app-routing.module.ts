@@ -23,6 +23,8 @@ import { FreeCellComponent } from './free-cell/free-cell.component';
 import { FreeCellScoresComponent } from './free-cell-scores/free-cell-scores.component';
 import { KlondikeComponent } from './klondike/klondike.component';
 import { KlondikeScoresComponent } from './klondike-scores/klondike-scores.component';
+import { ConcentrationComponent } from './concentration/concentration.component';
+import { ConcentrationScoresComponent } from './concentration-scores/concentration-scores.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,6 +53,8 @@ const routes: Routes = [
   { path: 'free_cell/scores', component: FreeCellScoresComponent },
   { path: 'klondike', component: KlondikeComponent },
   { path: 'klondike/scores', component: KlondikeScoresComponent },
+  { path: 'concentration', component: ConcentrationComponent },
+  { path: 'concentration/scores', component: ConcentrationScoresComponent },
 ];
 
 @NgModule({

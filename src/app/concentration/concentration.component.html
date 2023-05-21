@@ -1,0 +1,32 @@
+<div id="button-bar">
+  <button (click)="deal()" *ngIf="game.Status != 'Playing'">Deal</button>
+  <button *ngIf="game.Status == 'Playing'" (click)="quit()">Quit</button>
+  <div class="mr-4">
+    <strong>Moves</strong>
+    {{ moves }}
+  </div>
+  <div class="mr-4">
+    <strong>Matches</strong>
+    {{ matches }}
+  </div>
+  <div class="mr-4">
+    <strong>Time</strong>
+    {{ clock.formatted() }}
+  </div>
+  <button routerLink="/concentration/scores">Scores</button>
+</div>
+
+<div class="flex flex-wrap mx-4 my-4">
+  <div
+    *ngFor="let card of cards; let i = index"
+    class="card-container mr-4 mb-4"
+  >
+    <app-playing-card
+      [card]="card"
+      level="0"
+      index="{{ i }}"
+      from="concentration"
+      (clicked)="cardClicked($event)"
+    ></app-playing-card>
+  </div>
+</div>

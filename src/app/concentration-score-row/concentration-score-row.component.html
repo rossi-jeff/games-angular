@@ -1,0 +1,15 @@
+<div class="flex flex-wrap justify-between mx-4">
+    <div>
+      {{ concentration.user != null ? concentration.user.UserName : "Anonymous" }}
+    </div>
+    <div>
+      {{ concentration.Status }}
+    </div>
+    <div>
+      {{ formatSeconds(concentration.Elapsed || 0) }}
+    </div>
+    <div>
+      {{ concentration.Moves }}
+    </div>
+  </div>
+  
