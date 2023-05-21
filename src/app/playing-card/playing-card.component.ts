@@ -13,13 +13,19 @@ export class PlayingCardComponent {
     this._card = value;
     const { from, level, index, card } = this;
     this.id = `${from}_${level}_${card.id}_${index}`;
-    this.src = card.facedown ? card.backSrc : card.src;
-    this.alt = card.facedown ? 'Card Back' : card.toString();
     const top = parseInt(this.level) * 1.5 + 0.5;
     setTimeout(() => {
       const el = document.getElementById(this.id);
-      if (el) el.style.top = `${top}rem`;
-    }, 100);
+      if (el) {
+        el.style.top = `${top}rem`;
+        card.draggable
+          ? el.classList.add('draggable')
+          : el.classList.remove('draggable');
+        card.clickable
+          ? el.classList.add('clickable')
+          : el.classList.remove('clickable');
+      }
+    }, 0);
   }
   get card() {
     return this._card;
@@ -30,13 +36,17 @@ export class PlayingCardComponent {
   id: string = '';
   src: string = '';
   alt: string = '';
+  timeout: ReturnType<typeof setTimeout> | undefined;
   @Output() clicked = new EventEmitter<{ id: string }>();
   @Output() dragged = new EventEmitter<any>();
 
   cardClicked = () => {
     if (!this.card.clickable) return;
     const { id } = this;
-    this.clicked.emit({ id });
+    if (this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.clicked.emit({ id });
+    }, 150);
   };
 
   cardDragged = (ev: any) => {

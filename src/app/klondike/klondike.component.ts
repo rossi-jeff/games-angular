@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../api.service';
 import { Deck } from '../../lib/deck.class';
 import { Card, CardContainer } from '../../lib/card.class';
-import { GameStatus } from '../../enum/game-status.enum';
 import { Clock } from '../../lib/clock.class';
-import { ApiService } from '../api.service';
-import { FreeCell } from '../../types/free-cell.type';
+import { Klondike } from '../../types/klondike.type';
+import { GameStatus } from '../../enum/game-status.enum';
 
 @Component({
-  selector: 'app-free-cell',
-  templateUrl: './free-cell.component.html',
-  styleUrls: ['./free-cell.component.css'],
+  selector: 'app-klondike',
+  templateUrl: './klondike.component.html',
+  styleUrls: ['./klondike.component.css'],
 })
-export class FreeCellComponent {
-  game: FreeCell = {};
+export class KlondikeComponent {
+  game: Klondike = {};
   deck: Deck = new Deck();
-  free: CardContainer = {};
   aces: CardContainer = {};
+  stock: Card[] = [];
+  waste: Card[] = [];
   tableau: CardContainer = {};
   card: Card | undefined;
   canAutoComplete: boolean = false;
@@ -28,30 +29,39 @@ export class FreeCellComponent {
     this.deck = new Deck();
     this.deck.preload();
     this.deck.shuffle();
-    this.deck.cards.map((c) => (c.facedown = false));
+    this.stock = [];
+    this.waste = [];
     for (let i = 0; i < 4; i++) {
-      this.free[i] = [];
       this.aces[i] = [];
     }
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 7; i++) {
       this.tableau[i] = [];
     }
-    let counter = 0;
+    for (let i = 0; i < 7; i++) {
+      for (let j = i; j < 7; j++) {
+        this.card = this.deck.draw();
+        if (this.card) {
+          if (i == j) {
+            this.card.facedown = false;
+            this.card.draggable = true;
+          }
+          this.tableau[j].push(this.card);
+        }
+      }
+    }
     while (this.deck.cards.length) {
       this.card = this.deck.draw();
       if (this.card) {
-        this.tableau[counter].push(this.card);
+        this.card.clickable = true;
+        this.stock.push(this.card);
       }
-      counter++;
-      if (counter >= 8) counter = 0;
     }
     this.moves = 0;
-    this.adjustDraggable();
     this.createGame();
   };
 
   createGame = () => {
-    this.api.post({ path: 'api/free_cell', body: {} }).subscribe((result) => {
+    this.api.post({ path: 'api/klondike', body: {} }).subscribe((result) => {
       this.game = result;
       this.clock.run();
     });
@@ -63,7 +73,7 @@ export class FreeCellComponent {
     const Elapsed = this.clock.elapsed();
     this.api
       .patch({
-        path: `api/free_cell/${this.game.id}`,
+        path: `api/klondike/${this.game.id}`,
         body: { Status, Moves, Elapsed },
       })
       .subscribe((result) => (this.game = result));
@@ -71,14 +81,28 @@ export class FreeCellComponent {
 
   quit = () => {
     this.clock.pause();
+    this.stock = [];
+    this.waste = [];
     for (let i = 0; i < 4; i++) {
       this.aces[i] = [];
-      this.free[i] = [];
     }
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 7; i++) {
       this.tableau[i] = [];
     }
     this.updateGame(GameStatus.Lost);
+  };
+
+  checkStatus = () => {
+    let hiddenCount = 0;
+    for (let i = 0; i < 7; i++) {
+      for (const card of this.tableau[i]) if (card.facedown) hiddenCount++;
+    }
+    this.canAutoComplete =
+      hiddenCount == 0 && this.stock.length == 0 && this.waste.length == 0;
+    if (this.countAces() == 52) {
+      this.clock.pause();
+      this.updateGame(GameStatus.Won);
+    }
   };
 
   countAces = () => {
@@ -87,57 +111,13 @@ export class FreeCellComponent {
     return count;
   };
 
-  checkStatus = () => {
-    const aceCount = this.countAces();
-    let allDescending = true;
-    let current: Card | undefined;
-    let previous: Card | undefined;
-    const { deck } = this;
-    for (let i = 0; i < 8; i++) {
-      current = undefined;
-      previous = undefined;
-      for (let j = this.tableau[i].length - 1; j >= 0; j--) {
-        current = this.tableau[i][j];
-        if (previous) {
-          if (
-            !(
-              deck.faces.indexOf(current.face) ==
-                deck.faces.indexOf(previous.face) + 1 &&
-              deck.color(previous) != deck.color(current)
-            )
-          )
-            allDescending = false;
-        }
-        previous = current;
-      }
-      if (!allDescending) break;
-    }
-    this.canAutoComplete = allDescending;
-    if (aceCount == 52) {
-      this.clock.pause();
-      this.updateGame(GameStatus.Won);
-    }
-  };
-
   autoComplete = () => {
     let from: string = '';
     let to: string = '';
     let lowestCard: Card | undefined;
     let topCard: Card | undefined;
     const { deck } = this;
-    for (let i = 0; i < 4; i++) {
-      if (this.free[i].length) {
-        topCard = this.free[i][this.free[i].length - 1];
-        if (
-          !lowestCard ||
-          deck.faces.indexOf(topCard.face) < deck.faces.indexOf(lowestCard.face)
-        ) {
-          lowestCard = topCard;
-          from = `free-${i}`;
-        }
-      }
-    }
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 7; i++) {
       if (this.tableau[i].length) {
         topCard = this.tableau[i][this.tableau[i].length - 1];
         if (
@@ -179,8 +159,8 @@ export class FreeCellComponent {
     const [_, toIdx] = to.split('-');
     let card: Card | undefined;
     switch (fromType) {
-      case 'free':
-        card = this.free[parseInt(fromIdx)].pop();
+      case 'waste':
+        card = this.waste.pop();
         break;
       case 'aces':
         card = this.aces[parseInt(fromIdx)].pop();
@@ -191,38 +171,39 @@ export class FreeCellComponent {
     }
     if (!card) return;
     this.aces[parseInt(toIdx)].push(card);
-    this.checkStatus();
     this.moves++;
+    this.checkStatus();
     setTimeout(() => {
       this.autoComplete();
     }, 250);
   };
 
-  adjustDraggable = () => {
-    for (let i = 0; i < 4; i++) {
-      for (const card of this.aces[i]) card.draggable = false;
-      for (const card of this.free[i]) card.draggable = true;
+  stockClicked = (event: any) => {
+    const { id } = event;
+    const cardId = parseInt(id.split('_')[2]);
+    this.card = this.stock.pop();
+    if (this.card) {
+      if (this.card.id == cardId) {
+        this.card.clickable = false;
+        this.card.draggable = true;
+        this.card.facedown = false;
+        this.waste.push(this.card);
+        this.moves++;
+      } else {
+        this.stock.push(this.card);
+      }
     }
-    let current: Card | undefined;
-    let previous: Card | undefined;
-    let last: number;
-    const { deck } = this;
-    for (let i = 0; i < 8; i++) {
-      for (const card of this.tableau[i]) card.draggable = false;
-      current = undefined;
-      previous = undefined;
-      last = this.tableau[i].length - 1;
-      for (let j = last; j >= 0; j--) {
-        current = this.tableau[i][j];
-        if (j == last) current.draggable = true;
-        if (
-          previous &&
-          deck.faces.indexOf(current.face) ==
-            deck.faces.indexOf(previous.face) + 1 &&
-          deck.color(previous) != deck.color(current)
-        )
-          current.draggable = true;
-        previous = current;
+  };
+
+  resetStock = () => {
+    if (this.stock.length) return;
+    while (this.waste.length) {
+      this.card = this.waste.pop();
+      if (this.card) {
+        this.card.draggable = false;
+        this.card.clickable = true;
+        this.card.facedown = true;
+        this.stock.push(this.card);
       }
     }
   };
@@ -273,10 +254,11 @@ export class FreeCellComponent {
     const [toType, toIdx] = to.split('-');
     let card: Card | undefined;
     let complete = false;
+    let fromStack: Card[] = [];
     switch (fromType) {
-      case 'free':
+      case 'waste':
         while (!complete) {
-          card = this.free[parseInt(fromIdx)].pop();
+          card = this.waste.pop();
           if (card) {
             toMove.push(card);
             if (card.id == cardId) complete = true;
@@ -293,24 +275,25 @@ export class FreeCellComponent {
         }
         break;
       case 'tableau':
+        fromStack = [...this.tableau[parseInt(fromIdx)]];
         while (!complete) {
-          card = this.tableau[parseInt(fromIdx)].pop();
+          card = fromStack.pop();
           if (card) {
             toMove.push(card);
             if (card.id == cardId) complete = true;
           } else complete = true;
         }
+        if (fromStack.length > 0) {
+          card = fromStack[fromStack.length - 1];
+          if (card) {
+            card.facedown = false;
+            card.draggable = true;
+          }
+        }
+        this.tableau[parseInt(fromIdx)] = fromStack;
         break;
     }
     switch (toType) {
-      case 'free':
-        while (toMove.length) {
-          card = toMove.pop();
-          if (card) {
-            this.free[parseInt(toIdx)].push(card);
-          }
-        }
-        break;
       case 'aces':
         while (toMove.length) {
           card = toMove.pop();
@@ -329,25 +312,18 @@ export class FreeCellComponent {
         }
         break;
     }
-    this.adjustDraggable();
     this.moves++;
     this.checkStatus();
   };
 
   canDrop = (from: string, to: string, cardId: number) => {
-    const qty = this.getDraggedQuantity(from, cardId);
-    if (qty == 0) return false;
     const topCard = this.getTopCard(to);
     const draggedCard = this.getDraggedCard(from, cardId);
     if (draggedCard == undefined) return false;
-    const max = this.maxFreeSpace();
+    const qty = this.getDraggedQuantity(from, cardId);
     const [type, _] = to.split('-');
     const { deck } = this;
     switch (type) {
-      case 'free':
-        if (qty > 1) return false;
-        if (topCard == undefined) return true;
-        return false;
       case 'aces':
         if (qty > 1) return false;
         if (topCard == undefined && draggedCard.face == 'ace') return true;
@@ -360,9 +336,9 @@ export class FreeCellComponent {
           return true;
         return false;
       case 'tableau':
-        if (qty > max) return false;
-        if (topCard == undefined) return true;
+        if (topCard == undefined && draggedCard.face == 'king') return true;
         if (
+          topCard &&
           deck.color(topCard) != deck.color(draggedCard) &&
           deck.faces.indexOf(topCard.face) ==
             deck.faces.indexOf(draggedCard.face) + 1
@@ -373,27 +349,15 @@ export class FreeCellComponent {
     return false;
   };
 
-  maxFreeSpace = () => {
-    let emptyFree = 0;
-    let emptyTableau = 0;
-    for (let i = 0; i < 4; i++) {
-      if (!this.free[i].length) emptyFree++;
-    }
-    for (let i = 0; i < 8; i++) {
-      if (!this.tableau[i].length) emptyTableau++;
-    }
-    return emptyTableau * emptyFree + emptyFree + 1;
-  };
-
   getDraggedQuantity = (from: string, cardId: number) => {
     let [type, index] = from.split('-');
     const num = parseInt(index);
     let idx: number = -1;
     let length: number = 0;
     switch (type) {
-      case 'free':
-        idx = this.free[num].findIndex((c) => c.id == cardId);
-        length = this.free[num].length;
+      case 'waste':
+        idx = this.waste.findIndex((c) => c.id == cardId);
+        length = this.waste.length;
         break;
       case 'aces':
         idx = this.aces[num].findIndex((c) => c.id == cardId);
@@ -412,11 +376,6 @@ export class FreeCellComponent {
     let [type, index] = to.split('-');
     const num = parseInt(index);
     switch (type) {
-      case 'free':
-        if (this.free[num].length) {
-          card = this.free[num][this.free[num].length - 1];
-        }
-        break;
       case 'aces':
         if (this.aces[num].length) {
           card = this.aces[num][this.aces[num].length - 1];
@@ -436,8 +395,8 @@ export class FreeCellComponent {
     const num = parseInt(index);
     let card: Card | undefined;
     switch (type) {
-      case 'free':
-        card = this.free[num].find((c) => c.id == cardId);
+      case 'waste':
+        card = this.waste.find((c) => c.id == cardId);
         break;
       case 'aces':
         card = this.aces[num].find((c) => c.id == cardId);

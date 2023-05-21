@@ -1,0 +1,14 @@
+<div class="flex flex-wrap justify-between mx-4">
+  <div>
+    {{ klondike.user != null ? klondike.user.UserName : "Anonymous" }}
+  </div>
+  <div>
+    {{ klondike.Status }}
+  </div>
+  <div>
+    {{ formatSeconds(klondike.Elapsed || 0) }}
+  </div>
+  <div>
+    {{ klondike.Moves }}
+  </div>
+</div>
