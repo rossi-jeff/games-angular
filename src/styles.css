@@ -171,14 +171,17 @@ div.Miss span {
 .card-container {
   @apply border border-dashed border-black rounded w-28 h-[9.5rem] p-0 relative;
 }
-.free-cell-top-row {
+.free-cell-top-row,
+.klondike-top-row {
   @apply flex flex-wrap justify-between my-4 mx-4;
 }
 .free-cells,
-.ace-cells {
+.ace-cells,
+.klondike-controls {
   @apply flex flex-wrap;
 }
-.free-cells .card-container {
+.free-cells .card-container,
+.klondike-controls .card-container {
   @apply mr-4;
 }
 .ace-cells .card-container {

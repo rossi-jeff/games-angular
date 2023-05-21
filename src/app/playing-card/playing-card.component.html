@@ -6,8 +6,8 @@
   (dragstart)="cardDragged($event)"
 >
   <img
-    src="{{ src }}"
-    alt="{{ alt }}"
+    [src]="card.facedown ? card.backSrc : card.src"
+    [alt]="card.facedown ? 'Card Back' : card.toString()"
     class="playing-card-image"
     draggable="false"
     (click)="cardClicked()"

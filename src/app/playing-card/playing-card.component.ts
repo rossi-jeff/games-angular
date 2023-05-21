@@ -13,8 +13,6 @@ export class PlayingCardComponent {
     this._card = value;
     const { from, level, index, card } = this;
     this.id = `${from}_${level}_${card.id}_${index}`;
-    this.src = card.facedown ? card.backSrc : card.src;
-    this.alt = card.facedown ? 'Card Back' : card.toString();
     const top = parseInt(this.level) * 1.5 + 0.5;
     setTimeout(() => {
       const el = document.getElementById(this.id);
@@ -30,13 +28,17 @@ export class PlayingCardComponent {
   id: string = '';
   src: string = '';
   alt: string = '';
+  timeout: ReturnType<typeof setTimeout> | undefined;
   @Output() clicked = new EventEmitter<{ id: string }>();
   @Output() dragged = new EventEmitter<any>();
 
   cardClicked = () => {
     if (!this.card.clickable) return;
     const { id } = this;
-    this.clicked.emit({ id });
+    if (this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.clicked.emit({ id });
+    }, 150);
   };
 
   cardDragged = (ev: any) => {

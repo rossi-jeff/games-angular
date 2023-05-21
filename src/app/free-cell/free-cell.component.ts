@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Deck } from '../../lib/deck.class';
 import { Card, CardContainer } from '../../lib/card.class';
-import { Klondike } from '../../types/klondike.type';
 import { GameStatus } from '../../enum/game-status.enum';
 import { Clock } from '../../lib/clock.class';
 import { ApiService } from '../api.service';
+import { FreeCell } from '../../types/free-cell.type';
 
 @Component({
   selector: 'app-free-cell',
@@ -12,7 +12,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./free-cell.component.css'],
 })
 export class FreeCellComponent {
-  game: Klondike = {};
+  game: FreeCell = {};
   deck: Deck = new Deck();
   free: CardContainer = {};
   aces: CardContainer = {};
