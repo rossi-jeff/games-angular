@@ -1,0 +1,41 @@
+<div id="sign-in-dialog">
+  <h1>Sign In</h1>
+  <form [formGroup]="signInForm">
+    <div>
+      <label for="user-name">User Name</label>
+      <input
+        type="text"
+        name="user-name"
+        id="sign-in-user-name"
+        formControlName="UserName"
+      />
+      <div
+        *ngIf="
+          username && username.invalid && (username.dirty || username.touched)
+        "
+      >
+        <div *ngIf="username.errors?.['required']">User Name is required</div>
+      </div>
+    </div>
+    <div>
+      <label for="pass-word">Password</label>
+      <input
+        type="password"
+        name="pass-word"
+        id="sign-in-pass-word"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          password && password.invalid && (password.dirty || password.touched)
+        "
+      >
+        <div *ngIf="password.errors?.['required']">Password is required</div>
+      </div>
+    </div>
+  </form>
+  <div class="flex flex-wrap justify-between mt-2">
+    <button (click)="cancelClicked()">Cancel</button>
+    <button (click)="signInClicked()">Sign In</button>
+  </div>
+</div>
