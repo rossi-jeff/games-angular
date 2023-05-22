@@ -5,6 +5,7 @@ import { Concentration } from '../../types/concentration.type';
 import { Clock } from '../../lib/clock.class';
 import { GameStatus } from '../../enum/game-status.enum';
 import { ApiService } from '../api.service';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 type MatchType = {
   [key: string]: string | undefined;
@@ -27,6 +28,7 @@ export class ConcentrationComponent {
   matches: number = 0;
   clock: Clock = new Clock();
   interval: ReturnType<typeof setInterval> | undefined;
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
@@ -44,7 +46,11 @@ export class ConcentrationComponent {
 
   createGame = () => {
     this.api
-      .post({ path: 'api/concentration', body: {} })
+      .post({
+        path: 'api/concentration',
+        body: {},
+        token: this.session.data.Token || '',
+      })
       .subscribe((result) => {
         this.game = result;
         this.clock.run();

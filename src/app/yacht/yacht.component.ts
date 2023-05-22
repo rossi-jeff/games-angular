@@ -4,6 +4,7 @@ import { Yacht } from '../../types/yacht.type';
 import { YachtTurn } from '../../types/yacht-turn.type';
 import { YachtScoreOption } from '../../types/yacht-score-option.type';
 import { FlagType } from '../../types/flag-type.type';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 @Component({
   selector: 'app-yacht',
@@ -18,12 +19,17 @@ export class YachtComponent {
     keepOne: false,
     keepTwo: false,
   };
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
   newGame = () => {
     this.api
-      .post({ path: 'api/yacht', body: {} })
+      .post({
+        path: 'api/yacht',
+        body: {},
+        token: this.session.data.Token || '',
+      })
       .subscribe((result) => (this.game = result));
   };
 

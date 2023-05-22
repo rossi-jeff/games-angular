@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from './api.service';
+import { UserSessionStorage, blankSession } from '../lib/user-session.storage';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'games-angular';
+  session: UserSessionStorage = new UserSessionStorage();
+
+  constructor(private api: ApiService) {}
 
   showSignIn = () => {
     this.hideRegister();
@@ -44,12 +49,37 @@ export class AppComponent {
   };
 
   signIn = (ev: any) => {
+    const { UserName, password } = ev;
+    this.api
+      .post({ path: 'api/auth/login', body: { UserName, password } })
+      .subscribe((result: any) => {
+        const { UserName, Token } = result;
+        this.session.data = {
+          UserName,
+          Token,
+          SignedIn: true,
+        };
+        console.log({ UserName, Token });
+      });
     console.log(ev);
     this.hideSignIn();
   };
 
   register = (ev: any) => {
-    console.log(ev);
+    const { UserName, password, confirmation } = ev;
+    if (password == confirmation) {
+      this.api
+        .post({ path: 'api/auth/register', body: { UserName, password } })
+        .subscribe((result) => {
+          const user = result;
+          console.log({ user });
+          this.showSignIn();
+        });
+    }
     this.hideRegister();
+  };
+
+  signOut = () => {
+    this.session.data = blankSession;
   };
 }

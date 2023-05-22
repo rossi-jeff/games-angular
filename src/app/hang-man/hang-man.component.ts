@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { HangMan } from '../../types/hang-man.type';
 import { Word } from '../../types/word.type';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 @Component({
   selector: 'app-hang-man',
@@ -11,6 +12,7 @@ import { Word } from '../../types/word.type';
 export class HangManComponent {
   game: HangMan = {};
   word: Word = {};
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
@@ -26,7 +28,11 @@ export class HangManComponent {
 
   newGame = (WordId: number) => {
     this.api
-      .post({ path: 'api/hang_man', body: { WordId } })
+      .post({
+        path: 'api/hang_man',
+        body: { WordId },
+        token: this.session.data.Token || '',
+      })
       .subscribe((result) => (this.game = result));
   };
 
