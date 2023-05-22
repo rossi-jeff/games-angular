@@ -2,3 +2,11 @@
   *ngFor="let klondike of data.Items"
   [klondike]="klondike"
 ></app-klondike-score-row>
+
+<app-pagination-controls
+  [count]="data.Count"
+  [limit]="data.Limit"
+  [offset]="data.Offset"
+  (pageChanged)="pageChanged($event)"
+  (limitChanged)="limitChanged($event)"
+></app-pagination-controls>

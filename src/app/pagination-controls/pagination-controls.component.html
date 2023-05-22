@@ -1,0 +1,20 @@
+<div id="pagination-controls">
+  <div>
+    <label for="per-page" class="mr-2">Per Page</label>
+    <select name="per-page" id="per-page" (change)="limitSelectChanged($event)">
+      <option *ngFor="let p of perPage" [value]="p" [selected]="p == limit">
+        {{ p }}
+      </option>
+    </select>
+  </div>
+  <div id="pagination-buttons">
+    <button
+      *ngFor="let page of pages"
+      [disabled]="page == current"
+      (click)="pageClicked(page)"
+      [class]="buttonClass(page)"
+    >
+      {{ page }}
+    </button>
+  </div>
+</div>

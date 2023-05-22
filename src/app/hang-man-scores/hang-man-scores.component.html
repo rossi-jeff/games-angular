@@ -2,3 +2,11 @@
   *ngFor="let hangMan of data.Items"
   [hangMan]="hangMan"
 ></app-hang-man-score-row>
+
+<app-pagination-controls
+  [count]="data.Count"
+  [limit]="data.Limit"
+  [offset]="data.Offset"
+  (pageChanged)="pageChanged($event)"
+  (limitChanged)="limitChanged($event)"
+></app-pagination-controls>

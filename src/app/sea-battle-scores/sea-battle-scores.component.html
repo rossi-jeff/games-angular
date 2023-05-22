@@ -2,3 +2,11 @@
   *ngFor="let seaBattle of data.Items"
   [seaBattle]="seaBattle"
 ></app-sea-battle-score-row>
+
+<app-pagination-controls
+  [count]="data.Count"
+  [limit]="data.Limit"
+  [offset]="data.Offset"
+  (pageChanged)="pageChanged($event)"
+  (limitChanged)="limitChanged($event)"
+></app-pagination-controls>

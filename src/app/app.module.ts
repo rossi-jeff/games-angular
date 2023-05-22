@@ -65,6 +65,7 @@ import { KlondikeScoreRowComponent } from './klondike-score-row/klondike-score-r
 import { ConcentrationComponent } from './concentration/concentration.component';
 import { ConcentrationScoresComponent } from './concentration-scores/concentration-scores.component';
 import { ConcentrationScoreRowComponent } from './concentration-score-row/concentration-score-row.component';
+import { PaginationControlsComponent } from './pagination-controls/pagination-controls.component';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { ConcentrationScoreRowComponent } from './concentration-score-row/concen
     ConcentrationComponent,
     ConcentrationScoresComponent,
     ConcentrationScoreRowComponent,
+    PaginationControlsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
