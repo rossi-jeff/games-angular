@@ -208,3 +208,15 @@ div.Miss span {
 .clickable {
   @apply cursor-pointer;
 }
+#pagination-controls {
+  @apply flex flex-wrap justify-between mx-4 my-2;
+}
+#pagination-buttons {
+  @apply flex flex-wrap justify-end;
+}
+#pagination-buttons button {
+  @apply border border-black rounded px-2 py-1 ml-2;
+}
+#pagination-buttons button.current {
+  @apply bg-slate-200 rounded-full;
+}
