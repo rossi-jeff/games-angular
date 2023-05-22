@@ -6,6 +6,7 @@ import { ShipTypeLength } from '../../enum/ship-type.enum';
 import { Navy } from '../../enum/navy.enum';
 import { SeaBattleShip } from '../../types/sea-batte-ship.type';
 import { SeaBattleTurn } from '../../types/sea-battle-turn.type';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 @Component({
   selector: 'app-sea-battle',
@@ -22,6 +23,7 @@ export class SeaBattleComponent {
   opponentTurns: SeaBattleTurn[] = [];
   navy: Navy = Navy.Player;
   hasFired: boolean = false;
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
@@ -33,7 +35,11 @@ export class SeaBattleComponent {
       for (let i = 0; i < ships[key]; i++) this.shipsToPlace.push(key);
     }
     this.api
-      .post({ path: 'api/sea_battle', body: { Axis } })
+      .post({
+        path: 'api/sea_battle',
+        body: { Axis },
+        token: this.session.data.Token || '',
+      })
       .subscribe((result) => (this.game = result));
   };
 

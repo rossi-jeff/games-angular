@@ -1,0 +1,64 @@
+<div id="register-dialog">
+  <h1>Register</h1>
+  <form [formGroup]="registerForm">
+    <div>
+      <label for="user-name">User Name</label>
+      <input
+        type="text"
+        name="user-name"
+        id="register-user-name"
+        formControlName="UserName"
+      />
+      <div
+        *ngIf="
+          username && username.invalid && (username.dirty || username.touched)
+        "
+      >
+        <div *ngIf="username.errors?.['required']">User Name is required</div>
+      </div>
+    </div>
+    <div>
+      <label for="pass-word">Password</label>
+      <input
+        type="password"
+        name="pass-word"
+        id="register-pass-word"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          password && password.invalid && (password.dirty || password.touched)
+        "
+      >
+        <div *ngIf="password.errors?.['required']">Password is required</div>
+      </div>
+    </div>
+    <div>
+      <label for="confirmation">Confirmation</label>
+      <input
+        type="password"
+        name="confirmation"
+        id="register-confirmation"
+        formControlName="confirmation"
+      />
+      <div
+        *ngIf="
+          confirmation &&
+          confirmation.invalid &&
+          (confirmation.dirty || confirmation.touched)
+        "
+      >
+        <div *ngIf="confirmation.errors?.['required']">
+          Confirmation is required
+        </div>
+        <div *ngIf="confirmation.errors?.['misMatch']">
+          Password and Confirmation must match
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="flex flex-wrap justify-between mt-2">
+    <button (click)="cancelClicked()">Cancel</button>
+    <button (click)="registerClicked()">Register</button>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { CodeBreaker } from '../../types/code-breaker.type';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 @Component({
   selector: 'app-code-breaker',
@@ -11,6 +12,7 @@ export class CodeBreakerComponent {
   game: CodeBreaker = {};
   available: string[] = [];
   columns: number = 4;
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
@@ -26,7 +28,11 @@ export class CodeBreakerComponent {
     this.available = Colors;
     this.columns = Columns;
     this.api
-      .post({ path: 'api/code_breaker', body: { Colors, Columns } })
+      .post({
+        path: 'api/code_breaker',
+        body: { Colors, Columns },
+        token: this.session.data.Token || '',
+      })
       .subscribe((result) => (this.game = result));
   };
 

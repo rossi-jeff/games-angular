@@ -220,3 +220,22 @@ div.Miss span {
 #pagination-buttons button.current {
   @apply bg-slate-200 rounded-full;
 }
+#dialog-screen-overlay {
+  @apply fixed inset-0 bg-gray-500 bg-opacity-70 overflow-y-auto w-full h-full hidden;
+}
+#register-dialog,
+#sign-in-dialog {
+  @apply rounded-box w-72 bg-white mx-auto relative top-24 hidden;
+}
+#register-dialog label,
+#sign-in-dialog label {
+  @apply font-bold block;
+}
+#register-dialog input,
+#sign-in-dialog input {
+  @apply px-2 py-1 border border-black rounded text-black w-full;
+}
+#register-dialog button,
+#sign-in-dialog button {
+  @apply px-2 py-1 border border-black rounded;
+}

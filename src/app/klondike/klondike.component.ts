@@ -5,6 +5,7 @@ import { Card, CardContainer } from '../../lib/card.class';
 import { Clock } from '../../lib/clock.class';
 import { Klondike } from '../../types/klondike.type';
 import { GameStatus } from '../../enum/game-status.enum';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 @Component({
   selector: 'app-klondike',
@@ -22,6 +23,7 @@ export class KlondikeComponent {
   canAutoComplete: boolean = false;
   moves: number = 0;
   clock: Clock = new Clock();
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
@@ -61,10 +63,16 @@ export class KlondikeComponent {
   };
 
   createGame = () => {
-    this.api.post({ path: 'api/klondike', body: {} }).subscribe((result) => {
-      this.game = result;
-      this.clock.run();
-    });
+    this.api
+      .post({
+        path: 'api/klondike',
+        body: {},
+        token: this.session.data.Token || '',
+      })
+      .subscribe((result) => {
+        this.game = result;
+        this.clock.run();
+      });
   };
 
   updateGame = (Status: GameStatus) => {

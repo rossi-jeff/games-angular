@@ -66,6 +66,9 @@ import { ConcentrationComponent } from './concentration/concentration.component'
 import { ConcentrationScoresComponent } from './concentration-scores/concentration-scores.component';
 import { ConcentrationScoreRowComponent } from './concentration-score-row/concentration-score-row.component';
 import { PaginationControlsComponent } from './pagination-controls/pagination-controls.component';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -132,8 +135,15 @@ import { PaginationControlsComponent } from './pagination-controls/pagination-co
     ConcentrationScoresComponent,
     ConcentrationScoreRowComponent,
     PaginationControlsComponent,
+    RegisterDialogComponent,
+    SignInDialogComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

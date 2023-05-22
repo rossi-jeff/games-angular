@@ -1,4 +1,22 @@
 <div>
+  <div class="flex flex-wrap justify-end mx-4 mb-2">
+    <button (click)="showSignIn()" *ngIf="!session.data.SignedIn">
+      Sign In
+    </button>
+    <button
+      (click)="showRegister()"
+      class="ml-4"
+      *ngIf="!session.data.SignedIn"
+    >
+      Register
+    </button>
+    <div *ngIf="session.data.SignedIn">
+      {{ session.data.UserName }}
+    </div>
+    <button *ngIf="session.data.SignedIn" (click)="signOut()" class="ml-4">
+      Sign Out
+    </button>
+  </div>
   <div class="flex flex-wrap justify-between mx-4 mb-2">
     <button routerLink="/">Home</button>
     <button routerLink="/code_breaker">Code Breaker</button>
@@ -10,6 +28,16 @@
     <button routerLink="/free_cell">Free Cell</button>
     <button routerLink="/klondike">Klondike</button>
     <button routerLink="/concentration">Concentration</button>
+  </div>
+  <div id="dialog-screen-overlay">
+    <app-register-dialog
+      (cancel)="cancel()"
+      (register)="register($event)"
+    ></app-register-dialog>
+    <app-sign-in-dialog
+      (cancel)="cancel()"
+      (signIn)="signIn($event)"
+    ></app-sign-in-dialog>
   </div>
   <router-outlet></router-outlet>
 </div>

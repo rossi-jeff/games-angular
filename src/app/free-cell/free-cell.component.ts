@@ -5,6 +5,7 @@ import { GameStatus } from '../../enum/game-status.enum';
 import { Clock } from '../../lib/clock.class';
 import { ApiService } from '../api.service';
 import { FreeCell } from '../../types/free-cell.type';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 @Component({
   selector: 'app-free-cell',
@@ -21,6 +22,7 @@ export class FreeCellComponent {
   canAutoComplete: boolean = false;
   moves: number = 0;
   clock: Clock = new Clock();
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
@@ -51,10 +53,16 @@ export class FreeCellComponent {
   };
 
   createGame = () => {
-    this.api.post({ path: 'api/free_cell', body: {} }).subscribe((result) => {
-      this.game = result;
-      this.clock.run();
-    });
+    this.api
+      .post({
+        path: 'api/free_cell',
+        body: {},
+        token: this.session.data.Token || '',
+      })
+      .subscribe((result) => {
+        this.game = result;
+        this.clock.run();
+      });
   };
 
   updateGame = (Status: GameStatus) => {

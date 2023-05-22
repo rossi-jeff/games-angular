@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { GuessWord } from '../../types/guess-word.type';
 import { ApiService } from '../api.service';
 import { Word } from '../../types/word.type';
-import { HintArgsType } from 'src/types/hint-args.type';
+import { HintArgsType } from '../../types/hint-args.type';
+import { UserSessionStorage } from '../../lib/user-session.storage';
 
 @Component({
   selector: 'app-guess-word',
@@ -21,6 +22,7 @@ export class GuessWordComponent {
     Brown: [],
     Gray: [],
   };
+  session: UserSessionStorage = new UserSessionStorage();
 
   constructor(private api: ApiService) {}
 
@@ -47,7 +49,11 @@ export class GuessWordComponent {
 
   newGame = async (WordId: number) => {
     this.api
-      .post({ path: 'api/guess_word', body: { WordId } })
+      .post({
+        path: 'api/guess_word',
+        body: { WordId },
+        token: this.session.data.Token || '',
+      })
       .subscribe((result) => (this.game = result));
   };
 
