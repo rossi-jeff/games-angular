@@ -1,4 +1,4 @@
-<h1>Code Breaker</h1>
+<h1 class="ml-4">Code Breaker</h1>
 
 <app-code-breaker-guess-list
   *ngIf="game.Status == 'Playing' && game.guesses && game.guesses.length > 0"
@@ -24,4 +24,4 @@
   *ngIf="game.Status != 'Playing'"
 ></app-code-breaker-options>
 
-<button routerLink="/code_breaker/scores">Scores</button>
+<button routerLink="/code_breaker/scores" class="scores-link">Scores</button>

@@ -1,15 +1,14 @@
-<div class="flex flex-wrap justify-between mx-4">
-    <div>
-      {{ concentration.user != null ? concentration.user.UserName : "Anonymous" }}
-    </div>
-    <div>
-      {{ concentration.Status }}
-    </div>
-    <div>
-      {{ formatSeconds(concentration.Elapsed || 0) }}
-    </div>
-    <div>
-      {{ concentration.Moves }}
-    </div>
+<div class="score-row">
+  <div class="score-left">
+    {{ concentration.user != null ? concentration.user.UserName : "Anonymous" }}
   </div>
-  
+  <div class="score-center">
+    {{ concentration.Status }}
+  </div>
+  <div class="score-center">
+    {{ formatSeconds(concentration.Elapsed || 0) }}
+  </div>
+  <div class="score-right">
+    {{ concentration.Moves }}
+  </div>
+</div>

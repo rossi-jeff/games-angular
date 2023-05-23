@@ -1,12 +1,24 @@
-<app-code-breaker-score-row
-  *ngFor="let codeBreaker of data.Items"
-  [codeBreaker]="codeBreaker"
-></app-code-breaker-score-row>
+<div class="rounded-box mx-4 mb-2">
+  <div class="score-header">
+    <div class="score-left"></div>
+    <div class="score-center">User</div>
+    <div class="score-center">Status</div>
+    <div class="score-center">Score</div>
+    <div class="score-center">Colors</div>
+    <div class="score-right">Columns</div>
+  </div>
+  <app-code-breaker-score-row
+    *ngFor="let codeBreaker of data.Items"
+    [codeBreaker]="codeBreaker"
+  ></app-code-breaker-score-row>
+</div>
 
-<app-pagination-controls
-  [count]="data.Count"
-  [limit]="data.Limit"
-  [offset]="data.Offset"
-  (pageChanged)="pageChanged($event)"
-  (limitChanged)="limitChanged($event)"
-></app-pagination-controls>
+<div class="rounded-box mx-4">
+  <app-pagination-controls
+    [count]="data.Count"
+    [limit]="data.Limit"
+    [offset]="data.Offset"
+    (pageChanged)="pageChanged($event)"
+    (limitChanged)="limitChanged($event)"
+  ></app-pagination-controls>
+</div>

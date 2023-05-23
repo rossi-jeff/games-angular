@@ -1,14 +1,14 @@
-<div class="flex flex-wrap justify-between mx-4">
-  <div>
+<div class="score-row">
+  <div class="score-left">
     {{ klondike.user != null ? klondike.user.UserName : "Anonymous" }}
   </div>
-  <div>
+  <div class="score-center">
     {{ klondike.Status }}
   </div>
-  <div>
+  <div class="score-center">
     {{ formatSeconds(klondike.Elapsed || 0) }}
   </div>
-  <div>
+  <div class="score-right">
     {{ klondike.Moves }}
   </div>
 </div>

@@ -3,13 +3,61 @@
 @tailwind utilities;
 
 body {
-  @apply bg-tealGreen text-forest;
+  @apply bg-tealGreen text-black;
+}
+#home-content {
+  @apply mx-4 my-2;
+}
+#home-content div {
+  @apply mb-4;
 }
 .rounded-box {
   @apply border border-darkForest bg-limeGreen rounded p-4;
 }
 .rounded-box .rounded-box {
   @apply bg-forest text-white;
+}
+h1 {
+  @apply font-extrabold tracking-wide text-2xl mb-2;
+}
+h2 {
+  @apply font-bold text-xl;
+}
+h3 {
+  @apply font-bold text-lg;
+}
+button.scores-link {
+  @apply ml-4 font-bold text-darkForest;
+}
+button.scores-link:hover {
+  @apply underline;
+}
+label {
+  @apply font-bold mr-2;
+}
+select {
+  @apply px-2 py-1 rounded;
+}
+ul {
+  @apply list-disc list-inside mb-2;
+}
+li {
+  @apply ml-2;
+}
+.score-header {
+  @apply bg-darkForest text-white flex flex-wrap justify-between mx-4 px-2 py-1 rounded font-bold;
+}
+.score-row {
+  @apply flex flex-wrap justify-between mx-4 border-b border-dashed border-darkForest px-2 py-1;
+}
+.score-left {
+  @apply w-32 text-left;
+}
+.score-center {
+  @apply w-20 text-center;
+}
+.score-right {
+  @apply w-20 text-right;
 }
 .code-breaker-guess-colors,
 .code-breaker-guess-keys,
@@ -221,10 +269,10 @@ div.Miss span {
   @apply flex flex-wrap justify-end;
 }
 #pagination-buttons button {
-  @apply border border-black rounded px-2 py-1 ml-2;
+  @apply border border-darkForest bg-forest text-white rounded px-2 py-1 ml-2;
 }
 #pagination-buttons button.current {
-  @apply bg-slate-200 rounded-full;
+  @apply bg-darkForest text-white rounded-full;
 }
 #dialog-screen-overlay {
   @apply fixed inset-0 bg-gray-500 bg-opacity-70 overflow-y-auto w-full h-full hidden;
@@ -243,5 +291,8 @@ div.Miss span {
 }
 #register-dialog button,
 #sign-in-dialog button {
-  @apply px-2 py-1 border border-black rounded;
+  @apply px-2 py-1 border  border-darkForest bg-forest text-white rounded;
+}
+button:hover {
+  @apply opacity-70;
 }

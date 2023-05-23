@@ -1,14 +1,14 @@
-<div class="flex flex-wrap justify-between mx-4">
-  <div>
+<div class="score-row">
+  <div class="score-left">
     <button routerLink="/sea_battle/scores/{{ seaBattle.id }}">Details</button>
   </div>
-  <div>
+  <div class="score-center">
     {{ seaBattle.Status }}
   </div>
-  <div>
+  <div class="score-center">
     {{ seaBattle.Score }}
   </div>
-  <div>
+  <div class="score-right">
     {{ seaBattle.Axis }}
   </div>
 </div>
