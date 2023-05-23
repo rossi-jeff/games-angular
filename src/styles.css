@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-tealGreen text-forest;
+}
 .rounded-box {
-  @apply border border-black rounded p-4;
+  @apply border border-darkForest bg-limeGreen rounded p-4;
+}
+.rounded-box .rounded-box {
+  @apply bg-forest text-white;
 }
 .code-breaker-guess-colors,
 .code-breaker-guess-keys,
@@ -169,7 +175,7 @@ div.Miss span {
   @apply flex flex-wrap h-20 max-w-fit min-w-[10rem] px-2 py-2 mr-2 border border-dashed rounded border-black;
 }
 .card-container {
-  @apply border border-dashed border-black rounded w-28 h-[9.5rem] p-0 relative;
+  @apply border border-dashed border-darkForest bg-forest rounded w-28 h-[9.5rem] p-0 relative;
 }
 .free-cell-top-row,
 .klondike-top-row {
