@@ -32,6 +32,12 @@ h2 {
 h3 {
   @apply font-bold text-lg;
 }
+a {
+  @apply font-bold text-darkForest;
+}
+a:hover {
+  @apply underline;
+}
 button.scores-link {
   @apply ml-4 font-bold text-darkForest;
 }
