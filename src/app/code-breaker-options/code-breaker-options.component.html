@@ -1,7 +1,5 @@
 <div class="rounded-box code-breaker-guess-options justify-between mx-4">
-  <div class="White">
-    <button (click)="selectAll()">Select All</button>
-  </div>
+  <button (click)="selectAll()">Select All</button>
   <div *ngFor="let color of colors; let i = index" class="{{ color }}">
     <input
       type="checkbox"
@@ -19,9 +17,7 @@
       <option *ngFor="let col of columns" value="{{ col }}">{{ col }}</option>
     </select>
   </div>
-  <div class="White">
-    <button [disabled]="selected.Colors.length < 2" (click)="newGameClicked()">
-      New Game
-    </button>
-  </div>
+  <button [disabled]="selected.Colors.length < 2" (click)="newGameClicked()">
+    New Game
+  </button>
 </div>

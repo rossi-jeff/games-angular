@@ -1,6 +1,6 @@
 <div class="rounded-box mx-4 mb-2 p4">
   <h2>Scores</h2>
-  <div *ngFor="let turn of turns" class="flex flex-wrap justify-between">
+  <div *ngFor="let turn of turns" class="yacht-score-card-row">
     <div class="w-36">
       {{ turn.Category }}
     </div>
@@ -11,7 +11,7 @@
       {{ turn.Score }}
     </div>
   </div>
-  <div class="text-right">
+  <div class="text-right mx-2">
     <strong class="mr-2">Total</strong>
     <span>{{ score }}</span>
   </div>

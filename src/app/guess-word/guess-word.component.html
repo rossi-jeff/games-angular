@@ -1,3 +1,5 @@
+<h1 class="ml-4">Guess Word</h1>
+
 <app-guess-word-guess-list
   *ngIf="game.guesses && game.guesses.length > 0"
   [guesses]="game.guesses"
@@ -30,4 +32,4 @@
   *ngIf="game.Status != 'Playing'"
 ></app-guess-word-options>
 
-<button routerLink="/guess_word/scores">Scores</button>
+<button routerLink="/guess_word/scores" class="scores-link">Scores</button>

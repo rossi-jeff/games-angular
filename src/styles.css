@@ -17,6 +17,12 @@ body {
 .rounded-box .rounded-box {
   @apply bg-forest text-white;
 }
+.rounded-box button {
+  @apply bg-forest border-darkForest px-2 py-1 border rounded text-white;
+}
+.rounded-box .rounded-box button {
+  @apply bg-limeGreen text-darkForest;
+}
 h1 {
   @apply font-extrabold tracking-wide text-2xl mb-2;
 }
@@ -73,7 +79,7 @@ li {
   @apply border h-4 w-4 rounded-full mr-2;
 }
 .code-breaker-guess-options div {
-  @apply border px-2 py-1 rounded;
+  @apply border px-2 pt-2 rounded;
 }
 .guess-word-guess-ratings div {
   @apply h-8 w-8 border rounded text-center uppercase mr-2 pt-1;
@@ -145,11 +151,27 @@ select.Yellow,
 .guess-word-guess-letters input {
   @apply w-8 h-8 text-center bg-white text-black border border-black rounded mr-2;
 }
+.sea-battle-options {
+  @apply rounded-box mx-4 mb-2 p-4;
+}
+.sea-battle-controls {
+  @apply mx-4 flex-grow;
+}
+.sea-battle-options label,
+.sea-battle-controls label {
+  @apply inline-block w-24;
+}
+
+.sea-battle-options div,
+.sea-battle-controls div {
+  @apply border-b border-dashed border-darkForest px-2 py-1;
+}
+
 .ship-grid-header {
-  @apply w-10 h-10 text-center font-bold pt-2 bg-slate-200 border border-dotted border-slate-500;
+  @apply w-10 h-10 text-center font-bold pt-2 bg-darkForest text-white border border-dotted border-slate-500;
 }
 .ship-grid-cell {
-  @apply w-10 h-10 py-1 border border-dotted border-slate-500 text-center;
+  @apply w-10 h-10 py-1 border border-dotted border-slate-500 text-center bg-slate-100;
 }
 .highlighted {
   @apply bg-yellow-200;
@@ -168,7 +190,7 @@ div.Miss span {
   @apply flex flex-wrap justify-between;
 }
 .hang-man-buttons button {
-  @apply px-2 py-1 font-bold border border-black rounded;
+  @apply px-2 py-1 font-bold border border-darkForest text-darkForest bg-white rounded;
 }
 .hang-man-buttons button.correct {
   @apply border-green-900 text-green-900 bg-green-300;
@@ -183,7 +205,7 @@ div.Miss span {
   @apply w-8 h-8 border-b border-b-black font-bold text-center mr-2;
 }
 #hang-man-drawing {
-  @apply w-[25rem] h-[30rem] border border-black rounded ml-4 mb-2 relative;
+  @apply w-[25rem] h-[30rem] border border-darkForest bg-limeGreen  rounded ml-4 mb-2 relative;
 }
 #gallows-top {
   @apply w-[14rem] h-6 bg-amber-800 rounded absolute top-4 left-4;
@@ -217,6 +239,18 @@ div.Miss span {
 }
 .visible {
   visibility: visible !important;
+}
+.yacht-score-options {
+  @apply mx-2 mb-2  bg-forest text-white border border-darkForest rounded p-4;
+}
+.yacht-score-option-row {
+  @apply flex flex-wrap border-b border-dashed border-limeGreen px-2 py-1;
+}
+.yacht-score-options button {
+  @apply bg-limeGreen text-darkForest;
+}
+.yacht-score-card-row {
+  @apply flex flex-wrap justify-between px-2 py-1 border-b border-dashed border-darkForest;
 }
 #roll-dice,
 #score-dice {

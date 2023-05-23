@@ -1,4 +1,4 @@
-<div class="rounded-box mx-4 mb-2 p-4">
+<div class="sea-battle-options">
   <div>
     <label for="axis-select">Axis</label>
     <select id="axis-select" (change)="axisChanged($event)">
@@ -20,6 +20,13 @@
     </select>
   </div>
   <div>
-    <button [disabled]="!ready" (click)="newGameClicked()">New Game</button>
+    <label for="new-game-button"></label>
+    <button
+      [disabled]="!ready"
+      (click)="newGameClicked()"
+      name="new-game-button"
+    >
+      New Game
+    </button>
   </div>
 </div>

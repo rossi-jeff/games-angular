@@ -1,3 +1,5 @@
+<h1 class="ml-4">Sea Battle</h1>
+
 <app-sea-battle-player-turn
   *ngIf="
     game.Status == 'Playing' && shipsToPlace.length == 0 && navy == 'Player'
@@ -36,4 +38,4 @@
   *ngIf="game.Status != 'Playing'"
 ></app-sea-battle-options>
 
-<button routerLink="/sea_battle/scores">Scores</button>
+<button routerLink="/sea_battle/scores" class="scores-link">Scores</button>
