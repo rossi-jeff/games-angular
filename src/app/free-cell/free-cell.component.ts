@@ -198,6 +198,7 @@ export class FreeCellComponent {
         break;
     }
     if (!card) return;
+    card.draggable = false;
     this.aces[parseInt(toIdx)].push(card);
     this.checkStatus();
     this.moves++;

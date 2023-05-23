@@ -285,7 +285,7 @@ div.Miss span {
   @apply border-red-500;
 }
 #button-bar {
-  @apply flex flex-wrap mx-4;
+  @apply rounded-box flex flex-wrap mx-4;
 }
 #button-bar button {
   @apply mr-4;

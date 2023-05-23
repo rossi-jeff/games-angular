@@ -1,3 +1,5 @@
+<h1 class="ml-4">Ten Grand</h1>
+
 <app-ten-grand-current-turn
   *ngIf="game.Status == 'Playing'"
   [game]="game"
@@ -6,8 +8,8 @@
 
 <app-ten-grand-score-card [turns]="game.turns || []"></app-ten-grand-score-card>
 
-<div *ngIf="game.Status != 'Playing'">
+<div *ngIf="game.Status != 'Playing'" class="rounded-box mx-4 mb-2">
   <button (click)="newGame()">New Game</button>
 </div>
 
-<button routerLink="/ten_grand/scores">Scores</button>
+<button routerLink="/ten_grand/scores" class="scores-link">Scores</button>
