@@ -1,1 +1,73 @@
-<p>side-panel works!</p>
+<div id="side-panel">
+  <div class="text-right">
+    <button class="close" (click)="closeClicked()">
+      <ng-icon name="bootstrapXCircle" size="24"></ng-icon>
+    </button>
+  </div>
+  <div class="flex flex-col">
+    <button routerLink="/" (click)="closeClicked()">Home</button>
+    <button
+      routerLink="/code_breaker"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Code Breaker
+    </button>
+    <button
+      routerLink="/guess_word"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Guess Word
+    </button>
+    <button
+      routerLink="/sea_battle"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Sea Battle
+    </button>
+    <button
+      routerLink="/hang_man"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Hang Man
+    </button>
+    <button
+      routerLink="/yacht"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Yacht
+    </button>
+    <button
+      routerLink="/ten_grand"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Ten Grand
+    </button>
+    <button
+      routerLink="/free_cell"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Free Cell
+    </button>
+    <button
+      routerLink="/klondike"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Klondike
+    </button>
+    <button
+      routerLink="/concentration"
+      routerLinkActive="active"
+      (click)="closeClicked()"
+    >
+      Concentration
+    </button>
+  </div>
+</div>

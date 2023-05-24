@@ -72,6 +72,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
+import { NgIconsModule } from '@ng-icons/core';
+import { bootstrapXCircle, bootstrapJustify } from '@ng-icons/bootstrap-icons';
 
 @NgModule({
   declarations: [
@@ -149,6 +151,10 @@ import { SidePanelComponent } from './side-panel/side-panel.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgIconsModule.withIcons({
+      bootstrapXCircle,
+      bootstrapJustify,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

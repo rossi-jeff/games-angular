@@ -5,6 +5,44 @@
 body {
   @apply bg-tealGreen text-black;
 }
+h1 {
+  @apply font-extrabold tracking-wide text-2xl mb-2;
+}
+h2 {
+  @apply font-bold text-xl;
+}
+h3 {
+  @apply font-bold text-lg;
+}
+a {
+  @apply font-bold text-darkForest;
+}
+a:hover {
+  @apply underline;
+}
+#header-bar,
+#footer-bar {
+  @apply mx-2 my-2 p-2 bg-darkForest text-white rounded;
+}
+#side-panel {
+  @apply h-screen w-[10rem] bg-forest text-black fixed top-0 left-[-11rem] overflow-x-hidden transition z-10 border-r border-black;
+}
+#side-panel.open {
+  @apply left-0;
+}
+#side-panel button {
+  @apply px-2 py-1 mx-1 my-1 text-left font-bold border-b border-dashed border-darkForest;
+}
+#side-panel button.close {
+  @apply border-none;
+}
+#side-panel button.active {
+  @apply bg-darkForest text-white border-none rounded;
+}
+#header-bar a,
+#footer-bar a {
+  @apply text-white;
+}
 #home-content {
   @apply mx-4 my-2;
 }
@@ -23,21 +61,7 @@ body {
 .rounded-box .rounded-box button {
   @apply bg-limeGreen text-darkForest;
 }
-h1 {
-  @apply font-extrabold tracking-wide text-2xl mb-2;
-}
-h2 {
-  @apply font-bold text-xl;
-}
-h3 {
-  @apply font-bold text-lg;
-}
-a {
-  @apply font-bold text-darkForest;
-}
-a:hover {
-  @apply underline;
-}
+
 button.scores-link {
   @apply ml-4 font-bold text-darkForest;
 }

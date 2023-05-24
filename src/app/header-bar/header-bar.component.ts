@@ -11,6 +11,7 @@ export class HeaderBarComponent {
   @Output() signOut = new EventEmitter();
   @Output() showSignIn = new EventEmitter();
   @Output() showRegister = new EventEmitter();
+  @Output() toggle = new EventEmitter()
 
   signOutClicked = () => {
     this.signOut.emit();
@@ -23,4 +24,8 @@ export class HeaderBarComponent {
   showRegisterClicked = () => {
     this.showRegister.emit();
   };
+
+  menuClicked = () => {
+    this.toggle.emit()
+  }
 }

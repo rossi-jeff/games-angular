@@ -1,10 +1,12 @@
 <div class="m-0 p-0">
+  <app-side-panel (toggle)="toggleSidePanel()"></app-side-panel>
   <div class="flex flex-col h-screen">
     <app-header-bar
       [session]="session"
       (signOut)="signOut()"
       (showSignIn)="showSignIn()"
       (showRegister)="showRegister()"
+      (toggle)="toggleSidePanel()"
     ></app-header-bar>
     <div class="flex-grow overflow-y-auto h-full">
       <router-outlet></router-outlet>
