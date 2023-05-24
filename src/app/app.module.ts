@@ -69,6 +69,9 @@ import { PaginationControlsComponent } from './pagination-controls/pagination-co
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
+import { FooterBarComponent } from './footer-bar/footer-bar.component';
+import { SidePanelComponent } from './side-panel/side-panel.component';
 
 @NgModule({
   declarations: [
@@ -137,6 +140,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     PaginationControlsComponent,
     RegisterDialogComponent,
     SignInDialogComponent,
+    HeaderBarComponent,
+    FooterBarComponent,
+    SidePanelComponent,
   ],
   imports: [
     BrowserModule,
