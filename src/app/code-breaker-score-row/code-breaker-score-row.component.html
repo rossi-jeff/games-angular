@@ -1,22 +1,22 @@
-<div class="flex flex-wrap justify-between mx-4">
-  <div>
+<div class="score-row">
+  <div class="score-left">
     <button routerLink="/code_breaker/scores/{{ codeBreaker.id }}">
       Details
     </button>
   </div>
-  <div>
+  <div class="score-center">
     {{ codeBreaker.user != null ? codeBreaker.user.UserName : "Anonyous" }}
   </div>
-  <div>
+  <div class="score-center">
     {{ codeBreaker.Status }}
   </div>
-  <div>
+  <div class="score-center">
     {{ codeBreaker.Score }}
   </div>
-  <div>
+  <div class="score-center">
     {{ codeBreaker.Colors }}
   </div>
-  <div>
+  <div class="score-right">
     {{ codeBreaker.Columns }}
   </div>
 </div>

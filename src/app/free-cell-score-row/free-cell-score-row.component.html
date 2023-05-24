@@ -1,14 +1,14 @@
-<div class="flex flex-wrap justify-between mx-4">
-  <div>
+<div class="score-row">
+  <div class="score-left">
     {{ freeCell.user != null ? freeCell.user.UserName : "Anonymous" }}
   </div>
-  <div>
+  <div class="score-center">
     {{ freeCell.Status }}
   </div>
-  <div>
+  <div class="score-center">
     {{ formatSeconds(freeCell.Elapsed || 0) }}
   </div>
-  <div>
+  <div class="score-right">
     {{ freeCell.Moves }}
   </div>
 </div>

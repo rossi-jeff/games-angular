@@ -1,12 +1,25 @@
-<app-hang-man-score-row
-  *ngFor="let hangMan of data.Items"
-  [hangMan]="hangMan"
-></app-hang-man-score-row>
+<div class="rounded-box mx-4 mb-2">
+  <div class="score-header">
+    <div class="score-left"></div>
+    <div class="score-center">User</div>
+    <div class="score-center">Status</div>
+    <div class="score-center">Score</div>
+    <div class="score-center">Correct</div>
+    <div class="score-center">Wrong</div>
+    <div class="score-right">Word</div>
+  </div>
+  <app-hang-man-score-row
+    *ngFor="let hangMan of data.Items"
+    [hangMan]="hangMan"
+  ></app-hang-man-score-row>
+</div>
 
-<app-pagination-controls
-  [count]="data.Count"
-  [limit]="data.Limit"
-  [offset]="data.Offset"
-  (pageChanged)="pageChanged($event)"
-  (limitChanged)="limitChanged($event)"
-></app-pagination-controls>
+<div class="rounded-box mx-4 mb-2">
+  <app-pagination-controls
+    [count]="data.Count"
+    [limit]="data.Limit"
+    [offset]="data.Offset"
+    (pageChanged)="pageChanged($event)"
+    (limitChanged)="limitChanged($event)"
+  ></app-pagination-controls>
+</div>

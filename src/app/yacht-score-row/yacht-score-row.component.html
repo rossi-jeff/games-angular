@@ -1,11 +1,11 @@
-<div class="flex flex-wrap justify-between mx-4">
-  <div>
+<div class="score-row">
+  <div class="score-left">
     <button routerLink="/yacht/scores/{{ yacht.id }}">Details</button>
   </div>
-  <div>
+  <div class="score-center">
     {{ yacht.user != null ? yacht.user.UserName : "Anonymous" }}
   </div>
-  <div>
+  <div class="score-right">
     {{ yacht.Total }}
   </div>
 </div>

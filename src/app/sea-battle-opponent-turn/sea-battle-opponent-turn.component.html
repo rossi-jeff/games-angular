@@ -26,10 +26,12 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!readOnly">
+    <div *ngIf="!readOnly" class="sea-battle-controls">
       <!--controls-->
-      <button *ngIf="!hasFired" (click)="fireClicked()">Fire</button>
-      <button *ngIf="hasFired" (click)="toggleClicked()">Player Turn</button>
+      <div>
+        <button *ngIf="!hasFired" (click)="fireClicked()">Fire</button>
+        <button *ngIf="hasFired" (click)="toggleClicked()">Player Turn</button>
+      </div>
     </div>
   </div>
 </div>

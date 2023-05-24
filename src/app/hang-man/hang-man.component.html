@@ -1,3 +1,5 @@
+<h1 class="ml-4">Hang Man</h1>
+
 <app-hang-man-drawing
   *ngIf="game.Status != undefined"
   [wrong]="game.Wrong || ''"
@@ -26,4 +28,4 @@
   (newGame)="randomWord($event)"
 ></app-hang-man-options>
 
-<button routerLink="/hang_man/scores">Scores</button>
+<button routerLink="/hang_man/scores" class="scores-link">Scores</button>

@@ -1,5 +1,8 @@
-<div class="rounded-box mx-2 mb-2 p-2">
-  <div *ngFor="let option of options; let i = index" class="flex flex-wrap">
+<div class="yacht-score-options">
+  <div
+    *ngFor="let option of options; let i = index"
+    class="yacht-score-option-row"
+  >
     <div class="w-8">
       <input
         type="radio"
@@ -16,5 +19,8 @@
       {{ option.Score }}
     </div>
   </div>
-  <button (click)="scoreClicked()">Score Turn</button>
+  <div class="yacht-score-option-row">
+    <button (click)="scoreClicked()">Score Turn</button>
+  </div>
+
 </div>

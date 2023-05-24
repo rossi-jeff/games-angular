@@ -1,3 +1,5 @@
+<h1 class="ml-4">Free Cell</h1>
+
 <div id="button-bar">
   <button (click)="deal()" *ngIf="game.Status != 'Playing'">Deal</button>
   <button *ngIf="game.Status == 'Playing'" (click)="quit()">Quit</button>

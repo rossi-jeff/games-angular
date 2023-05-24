@@ -1,23 +1,23 @@
-<div class="flex flex-wrap justify-between mx-4">
-  <div>
+<div class="score-row">
+  <div class="score-left">
     <button routerLink="/hang_man/scores/{{ hangMan.id }}">Details</button>
   </div>
-  <div>
+  <div class="score-center">
     {{ hangMan.user != null ? hangMan.user.UserName : "Anonymous" }}
   </div>
-  <div>
+  <div class="score-center">
     {{ hangMan.Status }}
   </div>
-  <div>
+  <div class="score-center">
     {{ hangMan.Score }}
   </div>
-  <div>
+  <div class="score-center">
     {{ hangMan.Correct }}
   </div>
-  <div>
+  <div class="score-center">
     {{ hangMan.Wrong }}
   </div>
-  <div>
+  <div class="score-right">
     {{ hangMan.word != null ? hangMan.word.Word : "N/A" }}
   </div>
 </div>

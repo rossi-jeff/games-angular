@@ -1,12 +1,21 @@
-<app-ten-grand-score-row
-  *ngFor="let tenGrand of data.Items"
-  [tenGrand]="tenGrand"
-></app-ten-grand-score-row>
+<div class="rounded-box mx-4 mb-2">
+  <div class="score-header">
+    <div class="score-left"></div>
+    <div class="score-center">Status</div>
+    <div class="score-right">Score</div>
+  </div>
+  <app-ten-grand-score-row
+    *ngFor="let tenGrand of data.Items"
+    [tenGrand]="tenGrand"
+  ></app-ten-grand-score-row>
+</div>
 
-<app-pagination-controls
-  [count]="data.Count"
-  [limit]="data.Limit"
-  [offset]="data.Offset"
-  (pageChanged)="pageChanged($event)"
-  (limitChanged)="limitChanged($event)"
-></app-pagination-controls>
+<div class="rounded-box mx-4 mb-2">
+  <app-pagination-controls
+    [count]="data.Count"
+    [limit]="data.Limit"
+    [offset]="data.Offset"
+    (pageChanged)="pageChanged($event)"
+    (limitChanged)="limitChanged($event)"
+  ></app-pagination-controls>
+</div>

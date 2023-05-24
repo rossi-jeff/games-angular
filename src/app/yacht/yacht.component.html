@@ -1,3 +1,5 @@
+<h1 class="ml-4">Yacht</h1>
+
 <div
   class="rounded-box mx-4 mb-2 p4"
   *ngIf="game && game.NumTurns != undefined && game.NumTurns < 12"
@@ -43,8 +45,11 @@
   [score]="game.Total || 0"
 ></app-yacht-score-card>
 
-<div *ngIf="game.NumTurns == undefined || game.NumTurns >= 12">
+<div
+  *ngIf="game.NumTurns == undefined || game.NumTurns >= 12"
+  class="rounded-box mx-4 mb-2"
+>
   <button (click)="newGame()">New Game</button>
 </div>
 
-<button routerLink="/yacht/scores">Scores</button>
+<button routerLink="/yacht/scores" class="scores-link">Scores</button>
