@@ -4,6 +4,7 @@ import { ApiService } from '../api.service';
 import { Word } from '../../types/word.type';
 import { HintArgsType } from '../../types/hint-args.type';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-guess-word',
@@ -24,7 +25,9 @@ export class GuessWordComponent {
   };
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Guess Word');
+  }
 
   reloadGame = async () => {
     if (!this.game.id) return;

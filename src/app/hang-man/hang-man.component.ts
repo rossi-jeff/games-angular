@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { HangMan } from '../../types/hang-man.type';
 import { Word } from '../../types/word.type';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hang-man',
@@ -14,7 +15,9 @@ export class HangManComponent {
   word: Word = {};
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Hang Man');
+  }
 
   randomWord = (ev: any) => {
     const { Min, Max } = ev;

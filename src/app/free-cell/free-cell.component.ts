@@ -6,6 +6,7 @@ import { Clock } from '../../lib/clock.class';
 import { ApiService } from '../api.service';
 import { FreeCell } from '../../types/free-cell.type';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-free-cell',
@@ -24,7 +25,9 @@ export class FreeCellComponent {
   clock: Clock = new Clock();
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Free Cell');
+  }
 
   deal = () => {
     this.deck = new Deck();

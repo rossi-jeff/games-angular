@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
 import { GuessWord } from '../../types/guess-word.type';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-guess-word-score-detail',
@@ -12,7 +13,13 @@ export class GuessWordScoreDetailComponent implements OnInit {
   id!: string;
   guessWord: GuessWord = {};
 
-  constructor(private api: ApiService, private route: ActivatedRoute) {}
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Guess Word Score Detail');
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';

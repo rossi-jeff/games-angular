@@ -7,6 +7,7 @@ import { Navy } from '../../enum/navy.enum';
 import { SeaBattleShip } from '../../types/sea-batte-ship.type';
 import { SeaBattleTurn } from '../../types/sea-battle-turn.type';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sea-battle',
@@ -25,7 +26,9 @@ export class SeaBattleComponent {
   hasFired: boolean = false;
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Sea Battle');
+  }
 
   newGame = async (ev: any) => {
     const { axis: Axis, ships } = ev;

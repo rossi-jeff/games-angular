@@ -5,6 +5,7 @@ import { SeaBattle } from '../../types/sea-battle.type';
 import { SeaBattleShip } from '../../types/sea-batte-ship.type';
 import { SeaBattleTurn } from '../../types/sea-battle-turn.type';
 import { Navy } from '../../enum/navy.enum';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sea-battle-score-details',
@@ -19,7 +20,13 @@ export class SeaBattleScoreDetailsComponent implements OnInit {
   opponentShips: SeaBattleShip[] = [];
   opponentTurns: SeaBattleTurn[] = [];
 
-  constructor(private api: ApiService, private route: ActivatedRoute) {}
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Sea Battle Score Details');
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';
