@@ -1,34 +1,20 @@
-<div>
-  <div class="flex flex-wrap justify-end mx-4 mb-2">
-    <button (click)="showSignIn()" *ngIf="!session.data.SignedIn">
-      Sign In
-    </button>
-    <button
-      (click)="showRegister()"
-      class="ml-4"
-      *ngIf="!session.data.SignedIn"
-    >
-      Register
-    </button>
-    <div *ngIf="session.data.SignedIn">
-      {{ session.data.UserName }}
+<div class="m-0 p-0">
+  <app-side-panel (toggle)="toggleSidePanel()"></app-side-panel>
+  <div class="flex flex-col h-screen">
+    <app-header-bar
+      [session]="session"
+      (signOut)="signOut()"
+      (showSignIn)="showSignIn()"
+      (showRegister)="showRegister()"
+      (toggle)="toggleSidePanel()"
+    ></app-header-bar>
+    <div class="flex-grow overflow-y-auto h-full">
+      <router-outlet></router-outlet>
+      <div id="scroll-space" class="h-10"></div>
     </div>
-    <button *ngIf="session.data.SignedIn" (click)="signOut()" class="ml-4">
-      Sign Out
-    </button>
+    <app-footer-bar></app-footer-bar>
   </div>
-  <div class="flex flex-wrap justify-between mx-4 mb-2">
-    <button routerLink="/">Home</button>
-    <button routerLink="/code_breaker">Code Breaker</button>
-    <button routerLink="/guess_word">Guess Word</button>
-    <button routerLink="/sea_battle">Sea Battle</button>
-    <button routerLink="/hang_man">Hang Man</button>
-    <button routerLink="/yacht">Yacht</button>
-    <button routerLink="/ten_grand">Ten Grand</button>
-    <button routerLink="/free_cell">Free Cell</button>
-    <button routerLink="/klondike">Klondike</button>
-    <button routerLink="/concentration">Concentration</button>
-  </div>
+
   <div id="dialog-screen-overlay">
     <app-register-dialog
       (cancel)="cancel()"
@@ -39,5 +25,4 @@
       (signIn)="signIn($event)"
     ></app-sign-in-dialog>
   </div>
-  <router-outlet></router-outlet>
 </div>

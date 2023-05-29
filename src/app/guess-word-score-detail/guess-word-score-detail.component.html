@@ -1,6 +1,8 @@
+<h1 class="ml-4">Guess Word Score Details</h1>
+
 <app-guess-word-guess-list
   *ngIf="guessWord.guesses && guessWord.guesses.length > 0"
   [guesses]="guessWord.guesses"
 ></app-guess-word-guess-list>
 
-<button routerLink="/guess_word/scores">Back to Scores</button>
+<button routerLink="/guess_word/scores" class="scores-link">Back to Scores</button>

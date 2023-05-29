@@ -82,4 +82,9 @@ export class AppComponent {
   signOut = () => {
     this.session.data = blankSession;
   };
+
+  toggleSidePanel = () => {
+    const sidePanel = document.getElementById('side-panel');
+    if (sidePanel) sidePanel.classList.toggle('open');
+  };
 }

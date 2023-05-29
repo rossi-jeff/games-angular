@@ -6,6 +6,7 @@ import { Clock } from '../../lib/clock.class';
 import { Klondike } from '../../types/klondike.type';
 import { GameStatus } from '../../enum/game-status.enum';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-klondike',
@@ -25,7 +26,9 @@ export class KlondikeComponent {
   clock: Clock = new Clock();
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Klondike');
+  }
 
   deal = () => {
     this.deck = new Deck();

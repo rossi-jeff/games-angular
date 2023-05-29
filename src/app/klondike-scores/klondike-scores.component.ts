@@ -6,6 +6,7 @@ import {
   paginatedPath,
 } from 'src/lib/paginated-path';
 import { ApiService } from '../api.service';
+import { Title } from '@angular/platform-browser';
 
 type DataType = {
   Items: Klondike[];
@@ -27,7 +28,9 @@ export class KlondikeScoresComponent implements OnInit {
     Offset: defaultOffset,
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Klondike Scores');
+  }
 
   pageChanged = (page: number) => {
     const offset = (page - 1) * this.data.Limit;

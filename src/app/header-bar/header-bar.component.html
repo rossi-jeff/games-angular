@@ -1,0 +1,30 @@
+<div id="header-bar">
+  <div class="flex flex-wrap">
+    <button title="Open Menu" (click)="menuClicked()">
+      <ng-icon name="bootstrapJustify" size="24" class="mr-2"></ng-icon>
+    </button>
+    <h2 class="flex-grow">Games by Jeff Rossi</h2>
+    <div class="flex flex-wrap justify-end mb-2">
+      <button (click)="showSignInClicked()" *ngIf="!session.data.SignedIn">
+        Sign In
+      </button>
+      <button
+        (click)="showRegisterClicked()"
+        class="ml-4"
+        *ngIf="!session.data.SignedIn"
+      >
+        Register
+      </button>
+      <div *ngIf="session.data.SignedIn">
+        {{ session.data.UserName }}
+      </div>
+      <button
+        *ngIf="session.data.SignedIn"
+        (click)="signOutClicked()"
+        class="ml-4"
+      >
+        Sign Out
+      </button>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import {
   defaultOffset,
   paginatedPath,
 } from '../../lib/paginated-path';
+import { Title } from '@angular/platform-browser';
 
 type DataType = {
   Items: Yacht[];
@@ -27,7 +28,9 @@ export class YachtScoresComponent implements OnInit {
     Offset: defaultOffset,
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Yacht Scores');
+  }
 
   pageChanged = (page: number) => {
     const offset = (page - 1) * this.data.Limit;

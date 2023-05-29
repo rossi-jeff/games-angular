@@ -6,6 +6,7 @@ import {
 } from '../../lib/paginated-path';
 import { CodeBreaker } from '../../types/code-breaker.type';
 import { ApiService } from '../api.service';
+import { Title } from '@angular/platform-browser';
 
 type DataType = {
   Items: CodeBreaker[];
@@ -27,7 +28,9 @@ export class CodeBreakerScoresComponent implements OnInit {
     Offset: defaultOffset,
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Code Breaker Scorres');
+  }
 
   pageChanged = (page: number) => {
     const offset = (page - 1) * this.data.Limit;

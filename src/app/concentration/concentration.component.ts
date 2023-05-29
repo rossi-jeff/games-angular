@@ -6,6 +6,7 @@ import { Clock } from '../../lib/clock.class';
 import { GameStatus } from '../../enum/game-status.enum';
 import { ApiService } from '../api.service';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 type MatchType = {
   [key: string]: string | undefined;
@@ -30,7 +31,9 @@ export class ConcentrationComponent {
   interval: ReturnType<typeof setInterval> | undefined;
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Concentration')
+  }
 
   deal = () => {
     this.deck = new Deck();

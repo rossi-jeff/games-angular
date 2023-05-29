@@ -1,3 +1,5 @@
+<h1 class="ml-4">Sea Battle Score Details</h1>
+
 <app-sea-battle-player-turn
   [axis]="seaBattle.Axis || 8"
   [ships]="opponentShips"
@@ -14,4 +16,6 @@
   [readOnly]="true"
 ></app-sea-battle-opponent-turn>
 
-<button routerLink="/sea_battle/scores">Back to Scores</button>
+<button routerLink="/sea_battle/scores" class="scores-link">
+  Back to Scores
+</button>

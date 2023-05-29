@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { CodeBreaker } from '../../types/code-breaker.type';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-code-breaker',
@@ -14,7 +15,9 @@ export class CodeBreakerComponent {
   columns: number = 4;
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Code Breaker Game')
+  }
 
   reloadGame = async () => {
     if (!this.game.id) return;

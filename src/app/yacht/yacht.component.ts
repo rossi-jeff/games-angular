@@ -5,6 +5,7 @@ import { YachtTurn } from '../../types/yacht-turn.type';
 import { YachtScoreOption } from '../../types/yacht-score-option.type';
 import { FlagType } from '../../types/flag-type.type';
 import { UserSessionStorage } from '../../lib/user-session.storage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-yacht',
@@ -21,7 +22,9 @@ export class YachtComponent {
   };
   session: UserSessionStorage = new UserSessionStorage();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Yacht');
+  }
 
   newGame = () => {
     this.api
