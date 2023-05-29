@@ -79,6 +79,10 @@ import { GuessWordDirectionsComponent } from './guess-word-directions/guess-word
 import { SeaBattleDirectionsComponent } from './sea-battle-directions/sea-battle-directions.component';
 import { HangManDirectionsComponent } from './hang-man-directions/hang-man-directions.component';
 import { YachtDirectionsComponent } from './yacht-directions/yacht-directions.component';
+import { TenGrandDirectionsComponent } from './ten-grand-directions/ten-grand-directions.component';
+import { FreeCellDirectionsComponent } from './free-cell-directions/free-cell-directions.component';
+import { KlondikeDirectionsComponent } from './klondike-directions/klondike-directions.component';
+import { ConcentrationDirectionsComponent } from './concentration-directions/concentration-directions.component';
 
 @NgModule({
   declarations: [
@@ -155,6 +159,10 @@ import { YachtDirectionsComponent } from './yacht-directions/yacht-directions.co
     SeaBattleDirectionsComponent,
     HangManDirectionsComponent,
     YachtDirectionsComponent,
+    TenGrandDirectionsComponent,
+    FreeCellDirectionsComponent,
+    KlondikeDirectionsComponent,
+    ConcentrationDirectionsComponent,
   ],
   imports: [
     BrowserModule,

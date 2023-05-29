@@ -382,5 +382,8 @@ button:hover {
   @apply w-64;
 }
 .scoring-grid-row .score {
-  @apply w-32 text-right;
+  @apply w-48 text-right;
+}
+.scoring-grid-header {
+  @apply flex flex-wrap justify-between px-2 py-1 bg-darkForest text-white;
 }

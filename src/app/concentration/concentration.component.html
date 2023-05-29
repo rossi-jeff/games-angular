@@ -32,3 +32,7 @@
     ></app-playing-card>
   </div>
 </div>
+
+<app-concentration-directions
+  *ngIf="game.Status != 'Playing'"
+></app-concentration-directions>
