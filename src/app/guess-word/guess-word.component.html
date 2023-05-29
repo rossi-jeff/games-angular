@@ -1,4 +1,7 @@
-<h1 class="ml-4">Guess Word</h1>
+<div class="flex flex-wrap justify-between mx-4">
+  <h1 class="ml-4">Guess Word</h1>
+  <button routerLink="/guess_word/scores" class="scores-link">Scores</button>
+</div>
 
 <app-guess-word-guess-list
   *ngIf="game.guesses && game.guesses.length > 0"
@@ -32,4 +35,6 @@
   *ngIf="game.Status != 'Playing'"
 ></app-guess-word-options>
 
-<button routerLink="/guess_word/scores" class="scores-link">Scores</button>
+<app-guess-word-directions
+  *ngIf="game.Status != 'Playing'"
+></app-guess-word-directions>

@@ -74,6 +74,8 @@ import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
 import { NgIconsModule } from '@ng-icons/core';
 import { bootstrapXCircle, bootstrapJustify } from '@ng-icons/bootstrap-icons';
+import { CodeBreakerDirectionsComponent } from './code-breaker-directions/code-breaker-directions.component';
+import { GuessWordDirectionsComponent } from './guess-word-directions/guess-word-directions.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +147,8 @@ import { bootstrapXCircle, bootstrapJustify } from '@ng-icons/bootstrap-icons';
     HeaderBarComponent,
     FooterBarComponent,
     SidePanelComponent,
+    CodeBreakerDirectionsComponent,
+    GuessWordDirectionsComponent,
   ],
   imports: [
     BrowserModule,

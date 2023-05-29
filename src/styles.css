@@ -360,3 +360,12 @@ div.Miss span {
 button:hover {
   @apply opacity-70;
 }
+.direction-accordion {
+  @apply rounded-box mx-4 mt-4;
+}
+.directions-content {
+  @apply my-2 transition-all hidden;
+}
+.directions-content.open {
+  @apply block;
+}
