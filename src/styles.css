@@ -369,3 +369,18 @@ button:hover {
 .directions-content.open {
   @apply block;
 }
+.scoring-grid {
+  @apply border border-dashed rounded p-2 border-darkForest;
+}
+.scoring-grid-row {
+  @apply flex flex-wrap justify-between px-2 border-b border-dotted border-forest;
+}
+.scoring-grid-row .category {
+  @apply w-32 text-left;
+}
+.scoring-grid-row .description {
+  @apply w-64;
+}
+.scoring-grid-row .score {
+  @apply w-32 text-right;
+}

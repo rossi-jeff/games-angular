@@ -76,6 +76,9 @@ import { NgIconsModule } from '@ng-icons/core';
 import { bootstrapXCircle, bootstrapJustify } from '@ng-icons/bootstrap-icons';
 import { CodeBreakerDirectionsComponent } from './code-breaker-directions/code-breaker-directions.component';
 import { GuessWordDirectionsComponent } from './guess-word-directions/guess-word-directions.component';
+import { SeaBattleDirectionsComponent } from './sea-battle-directions/sea-battle-directions.component';
+import { HangManDirectionsComponent } from './hang-man-directions/hang-man-directions.component';
+import { YachtDirectionsComponent } from './yacht-directions/yacht-directions.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +152,9 @@ import { GuessWordDirectionsComponent } from './guess-word-directions/guess-word
     SidePanelComponent,
     CodeBreakerDirectionsComponent,
     GuessWordDirectionsComponent,
+    SeaBattleDirectionsComponent,
+    HangManDirectionsComponent,
+    YachtDirectionsComponent,
   ],
   imports: [
     BrowserModule,

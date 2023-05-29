@@ -1,4 +1,7 @@
-<h1 class="ml-4">Yacht</h1>
+<div class="flex flex-wrap justify-between mx-4">
+  <h1>Yacht</h1>
+  <button routerLink="/yacht/scores" class="scores-link">Scores</button>
+</div>
 
 <div
   class="rounded-box mx-4 mb-2 p4"
@@ -52,4 +55,6 @@
   <button (click)="newGame()">New Game</button>
 </div>
 
-<button routerLink="/yacht/scores" class="scores-link">Scores</button>
+<app-yacht-directions
+  *ngIf="game.NumTurns == undefined || game.NumTurns >= 12"
+></app-yacht-directions>

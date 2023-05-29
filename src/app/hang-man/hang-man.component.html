@@ -1,4 +1,7 @@
-<h1 class="ml-4">Hang Man</h1>
+<div class="flex flex-wrap justify-between mx-4">
+  <h1>Hang Man</h1>
+  <button routerLink="/hang_man/scores" class="scores-link">Scores</button>
+</div>
 
 <app-hang-man-drawing
   *ngIf="game.Status != undefined"
@@ -28,4 +31,6 @@
   (newGame)="randomWord($event)"
 ></app-hang-man-options>
 
-<button routerLink="/hang_man/scores" class="scores-link">Scores</button>
+<app-hang-man-directions
+  *ngIf="game.Status != 'Playing'"
+></app-hang-man-directions>
