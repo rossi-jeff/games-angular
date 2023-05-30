@@ -74,6 +74,15 @@ import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
 import { NgIconsModule } from '@ng-icons/core';
 import { bootstrapXCircle, bootstrapJustify } from '@ng-icons/bootstrap-icons';
+import { CodeBreakerDirectionsComponent } from './code-breaker-directions/code-breaker-directions.component';
+import { GuessWordDirectionsComponent } from './guess-word-directions/guess-word-directions.component';
+import { SeaBattleDirectionsComponent } from './sea-battle-directions/sea-battle-directions.component';
+import { HangManDirectionsComponent } from './hang-man-directions/hang-man-directions.component';
+import { YachtDirectionsComponent } from './yacht-directions/yacht-directions.component';
+import { TenGrandDirectionsComponent } from './ten-grand-directions/ten-grand-directions.component';
+import { FreeCellDirectionsComponent } from './free-cell-directions/free-cell-directions.component';
+import { KlondikeDirectionsComponent } from './klondike-directions/klondike-directions.component';
+import { ConcentrationDirectionsComponent } from './concentration-directions/concentration-directions.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +154,15 @@ import { bootstrapXCircle, bootstrapJustify } from '@ng-icons/bootstrap-icons';
     HeaderBarComponent,
     FooterBarComponent,
     SidePanelComponent,
+    CodeBreakerDirectionsComponent,
+    GuessWordDirectionsComponent,
+    SeaBattleDirectionsComponent,
+    HangManDirectionsComponent,
+    YachtDirectionsComponent,
+    TenGrandDirectionsComponent,
+    FreeCellDirectionsComponent,
+    KlondikeDirectionsComponent,
+    ConcentrationDirectionsComponent,
   ],
   imports: [
     BrowserModule,

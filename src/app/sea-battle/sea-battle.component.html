@@ -1,4 +1,7 @@
-<h1 class="ml-4">Sea Battle</h1>
+<div class="flex flex-wrap justify-between mx-4">
+  <h1 class="ml-4">Sea Battle</h1>
+  <button routerLink="/sea_battle/scores" class="scores-link">Scores</button>
+</div>
 
 <app-sea-battle-player-turn
   *ngIf="
@@ -38,4 +41,6 @@
   *ngIf="game.Status != 'Playing'"
 ></app-sea-battle-options>
 
-<button routerLink="/sea_battle/scores" class="scores-link">Scores</button>
+<app-sea-battle-directions
+  *ngIf="game.Status != 'Playing'"
+></app-sea-battle-directions>
