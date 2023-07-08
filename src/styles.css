@@ -387,3 +387,17 @@ button:hover {
 .scoring-grid-header {
   @apply flex flex-wrap justify-between px-2 py-1 bg-darkForest text-white;
 }
+
+#poker-squares-left .card-container {
+  @apply mb-4;
+}
+#poker-squares-right .card-container {
+  @apply mr-4 mb-4;
+}
+.poker-squares-row-label,
+.poker-squares-row-score {
+  @apply h-[9.5rem] font-bold pt-16 w-6 text-center mb-4;
+}
+.poker-squares-column-label {
+  @apply font-bold text-center w-28 mr-4;
+}

@@ -1,0 +1,98 @@
+<div id="button-bar">
+  <button (click)="deal()">Deal</button>
+  <div>
+    <strong class="mr-2">Total</strong>
+    <span>{{ scores.total }}</span>
+  </div>
+</div>
+
+<div class="flex flex-wrap mx-4 mt-8" id="poker-squares-game">
+  <div id="poker-squares-left" class="mr-16 pt-6">
+    <!-- left column -->
+    <div class="card-container">
+      <app-playing-card
+        *ngFor="let card of stock; let i = index"
+        [card]="card"
+        level="0"
+        index="{{ i }}"
+        from="stock"
+        (clicked)="stockClicked($event)"
+      ></app-playing-card>
+    </div>
+    <div class="card-container">
+      <app-playing-card
+        *ngIf="current != undefined"
+        [card]="current"
+        level="0"
+        index="0"
+        from="waste"
+        (dragged)="dragStart($event)"
+      ></app-playing-card>
+    </div>
+    <form [formGroup]="placementForm" class="rounded-box">
+      <div class="mb-2">
+        <label for="Row" class="inline-block w-16">Row</label>
+        <select
+          name="Row"
+          formControlName="Row"
+          (change)="highLightGridPoint()"
+        >
+          <option *ngFor="let row of rows" [value]="row">{{ row }}</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="Column" class="inline-block w-16">Column</label>
+        <select
+          name="Column"
+          formControlName="Column"
+          (change)="highLightGridPoint()"
+        >
+          <option *ngFor="let column of columns" [value]="column">
+            {{ column + 1 }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button (click)="placeCard()">Place Card</button>
+      </div>
+    </form>
+  </div>
+  <div id="poker-squares-right">
+    <!-- grid container-->
+    <div class="flex flex-wrap">
+      <div class="w-6">&nbsp;</div>
+      <div *ngFor="let column of columns" class="poker-squares-column-label">
+        {{ column + 1 }}
+      </div>
+      <div class="w-6">&nbsp;</div>
+    </div>
+    <div *ngFor="let row of rows" class="flex flex-wrap" id="row-{{ row }}">
+      <div class="poker-squares-row-label">{{ row }}</div>
+      <div
+        *ngFor="let column of columns"
+        class="card-container"
+        id="{{ row }}_{{ column }}"
+        (dragover)="dragOver($event)"
+        (dragenter)="dragEnter($event)"
+        (drop)="drop($event)"
+      >
+        <div class="m-0 p-0" *ngIf="grid[row][column] != undefined">
+          <app-playing-card
+            [card]="grid[row][column]"
+            level="0"
+            index="0"
+            from="grid"
+          ></app-playing-card>
+        </div>
+      </div>
+      <div class="poker-squares-row-score">{{ scores.row[row] }}</div>
+    </div>
+    <div class="flex flex-wrap">
+      <div class="w-6">&nbsp;</div>
+      <div *ngFor="let column of columns" class="poker-squares-column-label">
+        {{ scores.column[column] }}
+      </div>
+      <div class="w-6">&nbsp;</div>
+    </div>
+  </div>
+</div>

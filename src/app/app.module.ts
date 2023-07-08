@@ -83,6 +83,7 @@ import { TenGrandDirectionsComponent } from './ten-grand-directions/ten-grand-di
 import { FreeCellDirectionsComponent } from './free-cell-directions/free-cell-directions.component';
 import { KlondikeDirectionsComponent } from './klondike-directions/klondike-directions.component';
 import { ConcentrationDirectionsComponent } from './concentration-directions/concentration-directions.component';
+import { PokerSquaresComponent } from './poker-squares/poker-squares.component';
 
 @NgModule({
   declarations: [
@@ -163,6 +164,7 @@ import { ConcentrationDirectionsComponent } from './concentration-directions/con
     FreeCellDirectionsComponent,
     KlondikeDirectionsComponent,
     ConcentrationDirectionsComponent,
+    PokerSquaresComponent,
   ],
   imports: [
     BrowserModule,
