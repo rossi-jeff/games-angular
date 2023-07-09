@@ -26,6 +26,7 @@ import { KlondikeScoresComponent } from './klondike-scores/klondike-scores.compo
 import { ConcentrationComponent } from './concentration/concentration.component';
 import { ConcentrationScoresComponent } from './concentration-scores/concentration-scores.component';
 import { PokerSquaresComponent } from './poker-squares/poker-squares.component';
+import { PokerSquaresScoresComponent } from './poker-squares-scores/poker-squares-scores.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'concentration', component: ConcentrationComponent },
   { path: 'concentration/scores', component: ConcentrationScoresComponent },
   { path: 'poker_squares', component: PokerSquaresComponent },
+  { path: 'poker_squares/scores', component: PokerSquaresScoresComponent },
 ];
 
 @NgModule({

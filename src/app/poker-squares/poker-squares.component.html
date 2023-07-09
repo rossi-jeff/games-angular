@@ -1,6 +1,7 @@
 <div id="button-bar">
-  <button (click)="deal()">Deal</button>
-  <div>
+  <button (click)="deal()" *ngIf="game.Status != 'Playing'">Deal</button>
+  <button routerLink="/poker_squares/scores">Scores</button>
+  <div class="flex-grow text-right">
     <strong class="mr-2">Total</strong>
     <span>{{ scores.total }}</span>
   </div>
@@ -96,3 +97,7 @@
     </div>
   </div>
 </div>
+
+<app-poker-squares-directions
+  *ngIf="game.Status != 'Playing'"
+></app-poker-squares-directions>
