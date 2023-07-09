@@ -6,6 +6,7 @@ import { ApiService } from '../api.service';
 import { PokerSquare } from '../../types/poker-square.type';
 import { UserSessionStorage } from '../../lib/user-session.storage';
 import { GameStatus } from '../../enum/game-status.enum';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-poker-squares',
@@ -13,7 +14,9 @@ import { GameStatus } from '../../enum/game-status.enum';
   styleUrls: ['./poker-squares.component.css'],
 })
 export class PokerSquaresComponent {
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Poker Squares');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
   game: PokerSquare = {};
