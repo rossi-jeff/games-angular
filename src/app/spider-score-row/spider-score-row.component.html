@@ -1,0 +1,17 @@
+<div class="score-row">
+  <div class="score-left">
+    {{ spider.user != null ? spider.user.UserName : "Anonymous" }}
+  </div>
+  <div class="score-center">
+    {{ spider.Status }}
+  </div>
+  <div class="score-center">
+    {{ spider.Suits }}
+  </div>
+  <div class="score-center">
+    {{ formatSeconds(spider.Elapsed || 0) }}
+  </div>
+  <div class="score-right">
+    {{ spider.Moves }}
+  </div>
+</div>

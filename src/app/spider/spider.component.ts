@@ -1,32 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Title } from '@angular/platform-browser';
 import { Card, CardContainer } from 'src/lib/card.class';
 import { Deck } from 'src/lib/deck.class';
 import { Clock } from 'src/lib/clock.class';
 import { UserSessionStorage } from 'src/lib/user-session.storage';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Spider } from '../../types/spider.type';
+import { GameStatus } from '../../enum/game-status.enum';
 
 @Component({
   selector: 'app-spider',
   templateUrl: './spider.component.html',
   styleUrls: ['./spider.component.css'],
 })
-export class SpiderComponent {
-  deck: Deck = new Deck(2);
+export class SpiderComponent implements OnInit {
+  deck: Deck = new Deck();
   aces: CardContainer = {};
   tableau: CardContainer = {};
   stock: Card[] = [];
   moves: number = 0;
   clock: Clock = new Clock();
   session: UserSessionStorage = new UserSessionStorage();
+  suitForm = new FormGroup({
+    suits: new FormControl(4),
+  });
+  suitCounts: number[] = [4, 2, 1];
+  spider: Spider = {};
 
   constructor(private api: ApiService, private titleService: Title) {
     this.titleService.setTitle('Spider');
   }
 
   deal = () => {
-    this.deck = new Deck(2);
-    this.deck.preload();
+    let { suits } = this.suitForm.value;
+    suits = typeof suits == 'string' ? parseInt(suits) : 4;
+    console.log({ suits });
+    this.deck = new Deck({ decks: 2, suits });
     this.deck.shuffle();
     this.stock = [];
     for (let i = 0; i < 8; i++) {
@@ -53,7 +63,47 @@ export class SpiderComponent {
         this.stock.push(card);
       }
     }
+    this.moves = 0;
     this.adjustDraggable();
+    this.createGame(suits);
+  };
+
+  createGame = (Suits: number) => {
+    this.api
+      .post({
+        path: 'api/spider',
+        body: { Suits },
+        token: this.session.data.Token || '',
+      })
+      .subscribe((result) => {
+        this.spider = result;
+        this.clock.run();
+        console.log(this.spider);
+      });
+  };
+
+  updateGame = (Status: GameStatus) => {
+    if (!this.spider.id) return;
+    const { moves: Moves } = this;
+    const Elapsed = this.clock.elapsed();
+    this.api
+      .patch({
+        path: `api/spider/${this.spider.id}`,
+        body: { Status, Moves, Elapsed },
+      })
+      .subscribe((result) => (this.spider = result));
+  };
+
+  quit = () => {
+    this.clock.pause();
+    this.stock = [];
+    for (let i = 0; i < 8; i++) {
+      this.aces[i] = [];
+    }
+    for (let i = 0; i < 10; i++) {
+      this.tableau[i] = [];
+    }
+    this.updateGame(GameStatus.Lost);
   };
 
   adjustDraggable = () => {
@@ -83,11 +133,13 @@ export class SpiderComponent {
       }
     }
     this.tableau = Tableau;
-    this.moveCompleteSuits();
+    if (this.countAces() == 104) {
+      this.clock.pause();
+      this.updateGame(GameStatus.Won);
+    }
   };
 
   stockClicked = (ev: any) => {
-    console.log(ev);
     let card: Card | undefined;
     let Stock = [...this.stock];
     let Tableau = { ...this.tableau };
@@ -182,7 +234,7 @@ export class SpiderComponent {
     }
     this.tableau = Tableau;
     this.moves++;
-    this.adjustDraggable();
+    this.moveCompleteSuits();
   };
 
   getTopCard = (to: string) => {
@@ -260,5 +312,19 @@ export class SpiderComponent {
     }
     this.tableau = Tableau;
     this.aces = Aces;
+    this.adjustDraggable();
   };
+
+  countAces = () => {
+    let count = 0;
+    for (let i = 0; i < 8; i++) {
+      count += this.aces[i].length;
+    }
+    return count;
+  };
+
+  ngOnInit(): void {
+    this.deck = new Deck();
+    this.deck.preload();
+  }
 }

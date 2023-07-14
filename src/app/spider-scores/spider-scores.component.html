@@ -1,0 +1,25 @@
+<h1 class="ml-4">Spider Scores</h1>
+
+<div class="rounded-box mx-4 mb-2">
+  <div class="score-header">
+    <div class="score-left">User</div>
+    <div class="score-center">Status</div>
+    <div class="score-center">Suits</div>
+    <div class="score-center">Time</div>
+    <div class="score-right">Moves</div>
+  </div>
+  <app-spider-score-row
+    *ngFor="let spider of data.Items"
+    [spider]="spider"
+  ></app-spider-score-row>
+</div>
+
+<div class="rounded-box mx-4 mb-2">
+  <app-pagination-controls
+    [count]="data.Count"
+    [limit]="data.Limit"
+    [offset]="data.Offset"
+    (pageChanged)="pageChanged($event)"
+    (limitChanged)="limitChanged($event)"
+  ></app-pagination-controls>
+</div>

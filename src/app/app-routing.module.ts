@@ -28,6 +28,7 @@ import { ConcentrationScoresComponent } from './concentration-scores/concentrati
 import { PokerSquaresComponent } from './poker-squares/poker-squares.component';
 import { PokerSquaresScoresComponent } from './poker-squares-scores/poker-squares-scores.component';
 import { SpiderComponent } from './spider/spider.component';
+import { SpiderScoresComponent } from './spider-scores/spider-scores.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path: 'poker_squares', component: PokerSquaresComponent },
   { path: 'poker_squares/scores', component: PokerSquaresScoresComponent },
   { path: 'spider', component: SpiderComponent },
+  { path: 'spider/scores', component: SpiderScoresComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,31 @@
 <h1 class="ml-4">Spider</h1>
 
 <div id="button-bar">
-  <button (click)="deal()">Deal</button>
+  <div class="mr-4" *ngIf="spider.Status != 'Playing'">
+    <form [formGroup]="suitForm" class="inline-block mr-4">
+      <label for="suits">Suits</label>
+      <select name="suits" formControlName="suits">
+        <option *ngFor="let s of suitCounts" [value]="s">{{ s }}</option>
+      </select>
+    </form>
+    <button (click)="deal()">Deal</button>
+  </div>
+  <div class="mr-4" *ngIf="spider.Status == 'Playing'">
+    <button (click)="quit()">Quit</button>
+  </div>
+  <div class="mr-4">
+    <strong>Status</strong>
+    {{ spider.Status || "N/A" }}
+  </div>
+  <div class="mr-4">
+    <strong>Moves</strong>
+    {{ moves }}
+  </div>
+  <div class="mr-4">
+    <strong>Time</strong>
+    {{ clock.formatted() }}
+  </div>
+  <button routerLink="/spider/scores">Scores</button>
 </div>
 
 <div class="spider-top-row">
