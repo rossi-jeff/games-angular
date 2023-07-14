@@ -2,6 +2,7 @@ import { Card } from './card.class';
 
 export class Deck {
   cards: Card[] = [];
+  decks = 1;
   readonly suits: string[] = ['clubs', 'diamonds', 'hearts', 'spades'];
   readonly faces: string[] = [
     'ace',
@@ -40,7 +41,8 @@ export class Deck {
     spades: 'black',
   };
 
-  constructor() {
+  constructor(decks = 1) {
+    this.decks = decks;
     this.randomBack();
     this.build();
   }
@@ -48,11 +50,13 @@ export class Deck {
   build() {
     this.cards = [];
     let id = 1;
-    for (const suit of this.suits) {
-      for (const face of this.faces) {
-        const card = new Card(suit, face, this.back, id);
-        this.cards.push(card);
-        id++;
+    for (let i = 0; i < this.decks; i++) {
+      for (const suit of this.suits) {
+        for (const face of this.faces) {
+          const card = new Card(suit, face, this.back, id);
+          this.cards.push(card);
+          id++;
+        }
       }
     }
   }

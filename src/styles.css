@@ -290,19 +290,22 @@ div.Miss span {
   @apply border border-dashed border-darkForest bg-forest rounded w-28 h-[9.5rem] p-0 relative;
 }
 .free-cell-top-row,
-.klondike-top-row {
+.klondike-top-row,
+.spider-top-row {
   @apply flex flex-wrap justify-between my-4 mx-4;
 }
 .free-cells,
 .ace-cells,
-.klondike-controls {
+.klondike-controls,
+.spider-aces {
   @apply flex flex-wrap;
 }
 .free-cells .card-container,
 .klondike-controls .card-container {
   @apply mr-4;
 }
-.ace-cells .card-container {
+.ace-cells .card-container,
+.spider-aces .card-container {
   @apply ml-4;
 }
 .tableau-cells {
