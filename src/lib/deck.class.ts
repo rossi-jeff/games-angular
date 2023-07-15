@@ -53,8 +53,8 @@ export class Deck {
     this.cards = [];
     let id = 1;
     const { decks, suitCount } = this;
-    for (let i = 0; i < this.decks; i++) {
-      switch (this.suitCount) {
+    for (let i = 0; i < decks; i++) {
+      switch (suitCount) {
         case 4:
           for (const suit of this.suits) {
             for (const face of this.faces) {
@@ -77,8 +77,8 @@ export class Deck {
           }
           break;
         case 1:
-          const suit = this.suits[0];
           for (let j = 0; j < 4; j++) {
+            const suit = this.suits[0];
             for (const face of this.faces) {
               const card = new Card(suit, face, this.back, id);
               this.cards.push(card);
