@@ -90,6 +90,7 @@ import { PokerSquaresScoreRowComponent } from './poker-squares-score-row/poker-s
 import { SpiderComponent } from './spider/spider.component';
 import { SpiderScoresComponent } from './spider-scores/spider-scores.component';
 import { SpiderScoreRowComponent } from './spider-score-row/spider-score-row.component';
+import { SpiderDirectionsComponent } from './spider-directions/spider-directions.component';
 
 @NgModule({
   declarations: [
@@ -177,6 +178,7 @@ import { SpiderScoreRowComponent } from './spider-score-row/spider-score-row.com
     SpiderComponent,
     SpiderScoresComponent,
     SpiderScoreRowComponent,
+    SpiderDirectionsComponent,
   ],
   imports: [
     BrowserModule,
